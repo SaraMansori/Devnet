@@ -10,7 +10,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 2,
     maxlength: 15,
-    match: /^\s+$/,
+    match: /^\S+$/,
     trim: true
   },
   role:{
@@ -22,10 +22,6 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6,
-    maxlength: 12,
-    match: /^\s+$/,
-    trim: true
   },
   description: {
     type: String,
@@ -39,36 +35,48 @@ const userSchema = new Schema({
     required: true,
     default: 'https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg'
   },
-  'joined-events': [{
+
+  joined_events: [{
     type: Schema.Types.ObjectId,
     ref: 'Events'
   }],
-  'created-events': [{
+
+  created_events: [{
     type: Schema.Types.ObjectId,
     ref: 'Events'
   }],
+
   profession:[{
     type: String,
     required: true,
-    default: 'UNKOWN',
+    default: 'UNKNOWN',
     enum:['WEB DEVELOPER', 'DATA ANALYTICS', 'DESIGN UX/UI', 'CIBERSECURITY','DEVOPS', 'MOBILE DEVELOPER','DESKTOP DEVELOPER',]
   }],
+
   comments: [{
     type: Schema.Types.ObjectId,
     ref: 'Comment',
   }],
-  'followers': [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
+  
+  community: [{
+
+    followers: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+
+    following: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }]
+
   }],
-  'following': [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  'articles': [{
+
+  articles: [{
     type: Schema.Types.ObjectId,
     ref: 'Article'
   }],
+
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Message',

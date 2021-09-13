@@ -9,23 +9,31 @@ const messageSchema = new Schema({
     required: true,
     minlength: 2,
     maxlength: 15,
-    match: /^\s+$/,
+    match: /^\S+$/,
     trim: true
   },
+
   text:{
     type: String,
     required: true,
     maxlength: 300,
   },
+
   sender: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  //owner es el que tiene el mensaje de entrada en su bandeja
+  
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now()
+  }
 },
   {
   timestamps: true
