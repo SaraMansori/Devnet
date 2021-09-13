@@ -1,0 +1,35 @@
+<div class="container">
+
+
+    <div class="row justify-content-center space">
+
+        <div class="col-md-4">
+
+            <h3 class="loginCenter">YOUR ACCOUNT FOR EVERYTHING RELATED TO -NAME PAG-</h3>
+            <br>
+            <hr>
+            
+
+            <form action="/login" method="POST" class="spaceOne">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="userPwd">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-dark btn-block">Log in</button>
+            </form>
+
+            {{!-- {{#if errorMsg}}
+            <p id="errorMessage">{{errorMsg}}</p>
+            {{/if}} --}}
+
+            <hr>
+            <p>¿Not a member? -<a href="#"> Join us</a></p>
+        </div>
+    </div>
+</div>
