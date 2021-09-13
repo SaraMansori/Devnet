@@ -11,17 +11,10 @@ const commentSchema = new Schema({
     maxlength: 100,
     trim: true
   },
-
   owner:{
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-
-  recipient:{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-
   date: {
     type: Date,
   },
