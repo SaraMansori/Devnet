@@ -11,7 +11,7 @@ router.post('/registro', (req, res) => {
     const { username, userPwd } = req.body
 
     if (userPwd.length === 0) {       // Si la contraseña está vacía
-        res.render('auth/signup', { errorMsg: 'La contraseña es obligatoria' })
+        res.render('auth/signup', { errorMsg: 'The password is required' })
         return
     }
 
@@ -20,7 +20,7 @@ router.post('/registro', (req, res) => {
         .then(user => {
 
             if (user) {                   // Si el nombre de usuario ya existe
-                res.render('auth/signup', { errorMsg: 'Usuario ya registrado' })
+                res.render('auth/signup', { errorMsg: 'Registered user' })
                 return
             }
 
@@ -43,24 +43,24 @@ router.post('/registro', (req, res) => {
 router.get('/iniciar-sesion', (req, res) => res.render('auth/login'))
 router.post('/iniciar-sesion', (req, res) => {
 
-    const { username, userPwd } = req.body
+    const { email, userPwd } = req.body
 
-    if (userPwd.length === 0 || username.length === 0) {
+    if (userPwd.length === 0 || email.length === 0) {
         res.render('auth/login', { errorMsg: 'Rellena los campos' })
         return
     }
 
     User
-        .findOne({ username })
+        .findOne({ email })
         .then(user => {
 
             if (!user) {
-                res.render('auth/login', { errorMsg: 'Usuario no reconocido' })
+                res.render('auth/login', { errorMsg: 'Unrecognised user' })
                 return
             }
 
-            if (bcrypt.compareSync(userPwd, user.password) === false) {
-                res.render('auth/login', { errorMsg: 'Contraseña incorrecta' })
+            if (bcrypt.compareSync(email, user.password) === false) {
+                res.render('auth/login', { errorMsg: 'Incorrect password' })
                 return
             }
 

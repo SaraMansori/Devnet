@@ -154,6 +154,9 @@ body::-webkit-scrollbar {
 .blue {
   color: #596AFF
 }
+.navbar {
+  margin-bottom: 40px;
+}
 
 #errorMessage {
   background-color: red;
