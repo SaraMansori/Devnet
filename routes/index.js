@@ -1,11 +1,9 @@
 const router = require("express").Router();
 
-/* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-//TODAS LAS RUTAS - SEPARARLAS
 
 router.get('/events', (req, res, next) => {
   res.render('./../views/events/event')

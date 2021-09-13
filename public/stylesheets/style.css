@@ -4,9 +4,7 @@ body {
   font-weight: 200;
   background-color: rgb(33,37,41) ;
   box-sizing: border-box;
-  color: white;
-  padding: 40px;
-  
+  color: white;  
 }
 
 body::-webkit-scrollbar {
