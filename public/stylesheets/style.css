@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
+  font-weight: 200;
 }
 
 a {
@@ -9,4 +9,31 @@ a {
 
 h1 {
   color: 15px;
+}
+.navbar {
+  margin-bottom: 40px;
+}
+
+#errorMessage {
+  background-color: red;
+  color: white;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.loginCenter {
+  text-align: center;
+}
+
+.space {
+  padding: 30px ;
+}
+.icon-user:before {
+  content: "\e971";
+}
+
+.centerPolicy {
+  text-align:justify;
+  font-style: italic;
 }

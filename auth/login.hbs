@@ -1,0 +1,38 @@
+<div class="container">
+
+
+    <div class="row justify-content-center space">
+
+        <div class="col-md-4">
+
+            <h3 class="loginCenter">YOUR ACCOUNT FOR EVERYTHING RELATED TO -NAME PAG-</h3>
+            <br>
+            <hr>
+            
+
+            <form action="/login" method="POST" class="spaceOne">
+                <div class="form-group">
+                    <label for="username"></label>
+                    <input placeholder="Email address" type="text" class="form-control" id="username" name="email">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <input placeholder="Password" type="password" class="form-control" id="password" name="userPwd">
+                </div>
+                <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-dark" type="button">Log in</button>
+                </div>
+                
+            </form>
+
+            {{!-- {{#if errorMsg}}
+            <p id="errorMessage">{{errorMsg}}</p>
+            {{/if}} --}}
+
+            <hr>
+            <p>¿Not a member? -<a href="/joinus"> Join us</a></p>
+        </div>
+    </div>
+</div>

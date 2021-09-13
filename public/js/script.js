@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("project-2 JS imported successfully!");
+    console.log("proyect2ironhack JS imported successfully!");
   },
   false
 );
