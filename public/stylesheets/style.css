@@ -37,3 +37,12 @@ h1 {
   text-align:justify;
   font-style: italic;
 }
+
+.space {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.pad{
+  padding: 100px;
+}

@@ -1,27 +1,12 @@
-const router = require("express").Router();
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
+module.exports = app => {
 
-//TODAS LAS RUTAS - SEPARARLAS
+  app.use("/", require("./base.routes"))
+  // app.use("/events", require("./events.routes"))
+  app.use("/news", require("./new.routes"))
+  //app.use("/community", require("./community.routes"))
+  app.use("/user", require("./user.routes"))
+  app.use("/", require("./auth.routes"))
+  
 
-router.get('/events', (req, res, next) => {
-  res.render('./../views/events/event')
-})
-
-
-router.get('/login', (req, res , next) =>{
-  res.render('./../auth/login')
-})
-
-router.get('/news', (req, res, next) =>{
-  res.render('./../views/news/news')
-})
-
-router.get('/joinus', (req, res, next) =>{
-  res.render('./../auth/signup')
-})
-
-module.exports = router;
+}

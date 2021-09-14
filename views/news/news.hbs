@@ -1,1 +1,22 @@
-<h1>WELCOME ----> API THE NEW YORK TIME</h1>
+<div class="container">
+
+    <h1>WELCOME ----> API THE NEW YORK TIME</h1>
+    <hr>
+    <div class="row">
+        {{#each docs}}
+        <div class="col-md-3 space">
+
+            <div class="card" style="width: 18rem;">
+                {{#if multimedia}}
+                <img src="https://static01.nyt.com/{{multimedia.2.url}}" class="card-img-top" alt="image">
+                {{/if}}
+                <div class="card-body">
+                    <p class="card-text">{{abstract}}</p>
+                    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <hr>
+</div>

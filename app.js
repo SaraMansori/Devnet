@@ -1,11 +1,16 @@
-require("dotenv/config");
+// require("dotenv/config");
 require("./db");
+
+
 const express = require("express");
-const hbs = require("hbs");
 const app = express();
 require("./config")(app);
+require('./config/session.config')(app)
+
+const hbs = require("hbs");
 app.locals.title = ``;
-const index = require("./routes/index");
-app.use("/", index);
+
+require('./routes')(app)
 require("./error-handling")(app);
+
 module.exports = app;
