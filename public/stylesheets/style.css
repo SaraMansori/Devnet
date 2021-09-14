@@ -176,6 +176,11 @@ body::-webkit-scrollbar {
     margin-bottom: 0.5rem;
 }
 
+#map-canvas {
+    height: 350px;
+    background-color: grey;
+}
+
 .list-of-events .card-img-top {
     height: 100%;
 }

@@ -15,7 +15,7 @@ const eventSchema = new Schema(
         description: {
             type: String,
             //match: /^\S+$/,
-            maxlength: 15,
+            maxlength: 300,
         },
         date: {
             type: Date,
@@ -25,16 +25,12 @@ const eventSchema = new Schema(
             type: {
                 type: String,
             },
+
             coordinates: [Number],
+            city: String,
+            street: String,
         },
 
-        city: {
-            type: String,
-        },
-
-        street: {
-            type: String,
-        },
         image: {
             type: String,
             required: true,
