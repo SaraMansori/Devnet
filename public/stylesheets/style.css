@@ -1,199 +1,221 @@
-
 body {
-  font-family: 'Montserrat', sans-serif;;
-  font-weight: 200;
-  background-color: rgb(33,37,41) ;
-  box-sizing: border-box;
-  color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+    background-color: rgb(33, 37, 41);
+    box-sizing: border-box;
+    color: white;
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .navbar {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .navbar-dark .navbar-brand {
-  color: #FF8159;
-  font-weight: 800;
+    color: #ff8159;
+    font-weight: 800;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  font-weight: 300;
+    font-weight: 300;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
-  background-color: #FF8159;
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: #ff8159;
 }
 
 .navbar {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .top-block {
-  height: 85vh;
-  margin-top: 40px
+    height: 85vh;
+    margin-top: 40px;
 }
 
 .landing-illustration {
-  position: relative;
+    position: relative;
 }
 
 .landing-illustration .logo-circle {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  background-color: #596AFF;
-  border-radius: 50%;
-  z-index: 1;
-  color: white;
-  font-size: 3rem;
-  font-weight: 800;
-  right: 5%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: #596aff;
+    border-radius: 50%;
+    z-index: 1;
+    color: white;
+    font-size: 3rem;
+    font-weight: 800;
+    right: 5%;
 }
 
 .landing-illustration .bg-circle {
-  width: 500px;
-  height: 500px;
-  position: relative;
-  overflow: hidden;
-  background-color: #FF8159;
-  background-image: url(../images/landing-image.png);
-  background-size: cover;
-  border-radius: 50%;
-  box-shadow: 40px 10px #FF8159 ;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    background-color: #ff8159;
+    background-image: url(../images/landing-image.png);
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 40px 10px #ff8159;
 }
 
 .typewriter {
-  min-height: 5rem;
+    min-height: 5rem;
 }
 
 .landing-title {
-  height: inherit;
+    height: inherit;
 }
 
 .landing-title h2 {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin-left: 4rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-left: 4rem;
 }
 
 .landing-buttons {
-  width: 80%;
-  margin-top: 2rem  
+    width: 80%;
+    margin-top: 2rem;
 }
 
 .landing-buttons > * {
-  margin-right: 1rem; 
+    margin-right: 1rem;
 }
 
 .landing-buttons .btn-muted {
-  text-decoration: none;
-  color: #E5E5E5;
-  font-size: 1.2rem;
-  padding: 0.5rem 3rem 0.5rem 3rem; 
-  border-radius: 17px;
-  font-weight: bold;
-  border: 1px solid #E5E5E5;
-  background-color: transparent;
+    text-decoration: none;
+    color: #e5e5e5;
+    font-size: 1.2rem;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    border-radius: 17px;
+    font-weight: bold;
+    border: 1px solid #e5e5e5;
+    background-color: transparent;
 }
 
 .landing-buttons .btn {
-  text-decoration: none;
-  color: #E5E5E5;
-  font-size: 1.2rem;
-  background-color: #FF8159;
-  padding: 0.5rem 3rem 0.5rem 3rem; 
-  border-radius: 17px;
-  font-weight: bold;
+    text-decoration: none;
+    color: #e5e5e5;
+    font-size: 1.2rem;
+    background-color: #ff8159;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    border-radius: 17px;
+    font-weight: bold;
 }
 
 .landing-buttons .btn:hover {
-  color: #FF8159;
-  background-color: #E5E5E5;
+    color: #ff8159;
+    background-color: #e5e5e5;
 }
 
 .landing-buttons .btn-muted:hover {
-  color: rgb(33,37,41);
-  background-color: #E5E5E5  ;
-  transition: 0.4s;
+    color: rgb(33, 37, 41);
+    background-color: #e5e5e5;
+    transition: 0.4s;
 }
 
-
 .scroll-icon {
-  position: absolute;
-  width: 100vw;
-  margin-top: -40px;
+    position: absolute;
+    width: 100vw;
+    margin-top: -40px;
 }
 
 .cards-block {
-  background-color: #596AFF;
-  width: 100vw;
-  padding: 5rem;
+    background-color: #596aff;
+    width: 100vw;
+    padding: 5rem;
 }
 
+.landing-card,
 .card {
-  color: rgb(33,37,41);
-  height: 100%;
-  border: none;
-  font-weight: 350;
+    color: rgb(33, 37, 41);
+    height: 100%;
+    border: none;
+    font-weight: 350;
 }
 
-.card:hover {
-  transform: scale(0.95);
-  transition: 0.5s;
+.landing-card:hover {
+    transform: scale(0.95);
+    transition: 0.5s;
 }
 
 .card-quote {
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .blue {
-  color: #596AFF
+    color: #596aff;
+}
+
+.container {
+    padding: 3rem 6rem 3rem 6rem;
+}
+
+.orange-container,
+.new-event {
+    color: white;
+    margin-top: 80px;
+    background-color: #ff8159;
+    border-radius: 15px;
+}
+
+.new-event > * > * {
+    margin-bottom: 1rem;
+}
+
+.new-event label {
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.list-of-events .card-img-top {
+    height: 100%;
 }
 
 #errorMessage {
-  background-color: red;
-  color: white;
-  margin: 10px 0;
-  padding: 10px;
-  text-align: center;
+    background-color: red;
+    color: white;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
 }
 
 .loginCenter {
-  text-align: center;
+    text-align: center;
 }
 
 .space {
-  padding: 40px ;
+    padding: 40px;
 }
 
-@media (max-width: 1200px) { 
-  .landing-title h2 {
-    margin-left: 0;
-  }
+@media (max-width: 1200px) {
+    .landing-title h2 {
+        margin-left: 0;
+    }
 
-  .landing-buttons .btn-muted {
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem; 
-  }
+    .landing-buttons .btn-muted {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
 
-  .landing-buttons .btn {
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem; 
-  }
-
+    .landing-buttons .btn {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
 }
 
+@media (max-width: 992px) {
+    .card {
+        padding-bottom: 1rem;
+    }
 
-@media (max-width: 992px) { 
-  .card {
-    padding-bottom: 1rem;
-  }
-
-  .cards-block {
-    padding: 2rem;
-  }
+    .cards-block {
+        padding: 2rem;
+    }
 }
-

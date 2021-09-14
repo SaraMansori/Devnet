@@ -1,0 +1,33 @@
+<div class="container orange-container">
+
+    <h1 style="color: white">List of Events</h1>
+
+    <div class="row">
+
+        {{#each events}}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img
+                        class="card-img-top"
+                        src="{{image}}"
+                        alt="{{name}} event image"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        <a
+                            href="/events/details?id={{id}}"
+                            class="btn btn-primary"
+                        >Check details</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../js/api.handler.js"></script>
+    <script src="../../js/script.js"></script>
+
+</div>

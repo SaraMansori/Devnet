@@ -21,5 +21,5 @@ function typeWriter(i=0, index=1, direction=1) {
       }
 }
 
-window.onload(typeWriter())
+typeWriter()
 
