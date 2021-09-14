@@ -1,6 +1,5 @@
 const { urlencoded } = require("express");
 const { Schema, model } = require("mongoose");
-const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
@@ -10,7 +9,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 2,
     maxlength: 15,
-    match: /^\s+$/,
+    match: /^\S+$/,
     trim: true
   },
   role:{
@@ -22,21 +21,18 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6,
-    maxlength: 12,
-    match: /^\s+$/,
-    trim: true
   },
   description: {
     type: String,
-    required: true,
     minlength: 0,
     maxlength: 100,
     trim: true,
   },
+  email: {
+    type: String,
+  },
   image: {
     type: String,
-    required: true,
     default: 'https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg'
   },
   'joined-events': [{
@@ -49,7 +45,6 @@ const userSchema = new Schema({
   }],
   profession:[{
     type: String,
-    required: true,
     default: 'UNKOWN',
     enum:['WEB DEVELOPER', 'DATA ANALYTICS', 'DESIGN UX/UI', 'CIBERSECURITY','DEVOPS', 'MOBILE DEVELOPER','DESKTOP DEVELOPER',]
   }],

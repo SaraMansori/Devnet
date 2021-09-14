@@ -1,6 +1,5 @@
 <div class="container">
 
-
     <div class="row justify-content-center space">
 
         <div class="col-md-4">
@@ -10,10 +9,10 @@
             <hr>
             
 
-            <form action="/login" method="POST" class="spaceOne">
+            <form action="/iniciar-sesion" method="POST" class="spaceOne">
                 <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="text" class="form-control" id="username" name="username">
+                    <label for="username"></label>
+                    <input placeholder="Username" type="text" class="form-control" id="username" name="username">
                 </div>
                 <br>
                 <div class="form-group">
@@ -21,15 +20,16 @@
                     <input type="password" class="form-control" id="password" name="userPwd">
                 </div>
                 <br>
-                <button type="submit" class="btn btn-dark btn-block">Log in</button>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-dark" type="button">Acceder</button>
+                </div>  
             </form>
 
-            {{!-- {{#if errorMsg}}
+            {{#if errorMsg}}
             <p id="errorMessage">{{errorMsg}}</p>
-            {{/if}} --}}
-
+            {{/if}}
             <hr>
-            <p>¿Not a member? -<a href="#"> Join us</a></p>
+            <p>¿Not a member? -<a href="/registro"> Join us</a></p>
         </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
 const { urlencoded } = require("express");
 const { Schema, model } = require("mongoose");
-const Schema = mongoose.Schema;
 
 
 const articleSchema = new Schema({
