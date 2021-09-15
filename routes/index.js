@@ -7,6 +7,6 @@ module.exports = app => {
   app.use("/user", require("./user.routes"))
   app.use("/", require("./auth.routes"))
   //app.use("/community", require("./community.routes"))
-  //app.use("/", require("./auth.routes"))
+  app.use("/", require("./profile.routes"))
 
 }

@@ -41,24 +41,20 @@ router.post('/registro', (req, res) => {
 router.get("/registro/info/:id", (req, res) => {
     res.render('./../views/form')
 
-    
-    router.post('/registro/info/:id',(req, res,) => {
-
-
-        const {id} = req.params
-        const { email, description, role, profession } = req.body
-    
-        User
-        .findByIdAndUpdate(id, {email, description, role, profession}, { new: true })
-        .then(()=> res.redirect('/iniciar-sesion'))
-        .catch(err => console.log(err))
-
-
-
-    })
 
 })
 
+router.post('/registro/info/:id',(req, res,) => {
+
+
+    const {id} = req.params
+    const { email, description, profession } = req.body
+
+    User
+    .findByIdAndUpdate(id, {email, description, profession}, { new: true })
+    .then(()=> res.redirect(`/profile/${id}`)) 
+    .catch(err => console.log(err))
+})
 
 
 // Login
@@ -87,7 +83,7 @@ router.post('/iniciar-sesion', (req, res) => {
             }
 
             req.session.currentUser = user
-            res.redirect('/perfil')
+            res.redirect(`/profile/${user.id}`)
         })
         .catch(err => console.log(err))
 
