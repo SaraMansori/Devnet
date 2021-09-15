@@ -21,14 +21,16 @@ const eventSchema = new Schema(
             type: Date,
             required: true,
         },
+
         location: {
             type: {
                 type: String,
             },
-
             coordinates: [Number],
-            city: String,
-            street: String,
+        },
+
+        address: {
+            type: String,
         },
 
         image: {

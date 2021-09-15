@@ -11,7 +11,13 @@
                 action="/events/new"
                 enctype="multipart/form-data"
             >
-                <div class="form-group">
+                
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="form-group">
                     <label for="name">Name</label>
                     <input
                         type="text"
@@ -31,46 +37,36 @@
                     ></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input
-                        type="date"
-                        class="form-control"
-                        id="date"
-                        name="date"
-                    />
-                </div>
-
-                <div class="row justify-content-center">
-
-                    <div class="form-group col-md-5">
-                        <label for="address">Address</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="address"
-                            name="address"
-                            required
-                        />
-
-                        <button
-                            type="button"
-                            class="btn btn-primary d-block"
-                            id="submit"
-                        >Locate!</button>
-
+                <div class="row">
+                    <div class="col-3">
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="date">Date</label>
                             <input
-                                type="hidden"
-                                id="located-address"
+                                type="date"
                                 class="form-control"
-                                name="address"
+                                id="date"
+                                name="date"
                             />
                         </div>
-                        <small id="located-address"></small>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="time">Hour</label>
+                            <input
+                                type="time"
+                                class="form-control"
+                                id="time"
+                                name="time"
+                                min="00:00" max="23:00"
+                            />
+                        </div>
+                    </div>
+                    
+                </div>
 
-                        <br />
+                    </div>
+
+                    <div class="form-group col-md-5">
                         <div class="form-group">
                             <label for="event-image">Event Image</label>
                             <input
@@ -80,6 +76,31 @@
                                 name="image"
                             />
                         </div>
+                        
+                        <br>
+
+                        <label for="address">Address</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="address"
+                                name="addressUser"
+                                required
+                        />
+
+                        <small id="located-address-show"></small>
+
+                        <br>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary d-block"
+                            id="submit"
+                        >Locate</button>
+                            
+                        <input id="located-address" class="form-control" name="address" hidden></input>
+                        <input id="located-latitude" class="form-control" name="lat" hidden></input>
+                        <input id="located-longitude" class="form-control" name="lng" hidden></input>
                     </div>
 
                     <div class="col-md-7">
