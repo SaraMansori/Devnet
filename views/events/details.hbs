@@ -13,8 +13,20 @@
             <ul>
                 <li> <b>Description: </b> {{description}}</li>
                 <li> <b>Date:</b> {{date}}</li>
-                <li> <b>Location:</b> maps </li>
+                <li> <b>Location:</b> <span id="address">{{address}}</span></li>
             </ul>
+
+            <ul>
+                Attendees:
+                <li>Atendee 1</li>
+                <li>Atendee 2</li>
+            </ul>
+
+            <div class="col-md-7">
+                <div id="map-canvas"></div>
+            </div>
+
+            <p id="error-msg"></p>
 
             <div class="row justify-content-between">
 
@@ -22,7 +34,11 @@
                     <a href="#" type="button" class="btn btn-primary">Join</a>
                 </div>
                 <div class="col-6">
-                    <a href="#" type="button" class="btn btn-dark">Edit Event</a>
+                    <a
+                        href="/events/edit?id={{id}}"
+                        type="button"
+                        class="btn btn-dark"
+                    >Edit Event</a>
                     <a href="#" type="button" class="btn btn-danger">Delete
                         Event</a>
                 </div>
@@ -34,3 +50,10 @@
     </div>
 
 </div>
+
+<script src="../../js/maps/mapStyles.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../../js/maps/drawMap.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXr7ulrn0s_L3XB6wxBClITp6RNzz3bbc&callback=initMap"
+></script>

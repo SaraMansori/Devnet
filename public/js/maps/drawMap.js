@@ -10,24 +10,13 @@ function initMap() {
     });
     let geocoder = new google.maps.Geocoder();
 
-    document.getElementById("submit").addEventListener("click", function () {
-        geocodeAddress(geocoder, map);
-    });
+    geocodeAddress(geocoder, map);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-    let address = document.getElementById("address").value;
+    let address = document.getElementById("address").innerHTML;
 
     geocoder.geocode({ address: address }, function (results, status) {
-        document.querySelector("#located-address").value =
-            results[0].formatted_address;
-
-        document.querySelector("#located-latitude").value =
-            results[0].geometry.location.lat();
-
-        document.querySelector("#located-longitude").value =
-            results[0].geometry.location.lng();
-
         if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             let marker = new google.maps.Marker({
