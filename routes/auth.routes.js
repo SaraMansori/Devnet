@@ -50,7 +50,7 @@ router.get("/registro/info/:id", (req, res) => {
     
         User
         .findByIdAndUpdate(id, {email, description, role, profession}, { new: true })
-        .then(()=> res.redirect('/'))
+        .then(()=> res.redirect('/iniciar-sesion'))
         .catch(err => console.log(err))
 
 
