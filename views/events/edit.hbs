@@ -5,75 +5,75 @@
 
         <div class="container new-event">
 
-            <h1 style="color: white">Edit event</h1>
+            <h1 style="color: white">Edit event {{_id}}</h1>
 
             <form
                 method="POST"
-                action="/events/new"
+                action="/events/edit?id={{_id}}"
                 enctype="multipart/form-data"
             >
                 
-
                 <div class="row">
 
                     <div class="col-12">
 
                         <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                        value="{{name}}"
-                    />
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea
-                        class="form-control"
-                        id="description"
-                        rows="3"
-                        name="description"
-                    >{{description}}
-                    </textarea>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="date">Date</label>
+                            <label for="name">Name</label>
                             <input
-                                type="date"
+                                type="text"
                                 class="form-control"
-                                id="date"
-                                name="date"
-                                value="{{date.fullDate}}"
+                                id="name"
+                                name="name"
+                                value="{{name}}"
                             />
                         </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <label for="time">Hour</label>
-                            <input
-                                type="time"
-                                class="form-control"
-                                id="time"
-                                name="time"
-                                min="00:00" max="23:00"
-                                value="{{date.time}}"
-                            />
-                        </div>
-                    </div>
-                    
-                </div>
 
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea
+                                class="form-control"
+                                id="description"
+                                rows="3"
+                                name="description"
+                            >{{description}}
+                            </textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="date"
+                                        name="date"
+                                        value="{{date.fullDate}}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="time">Hour</label>
+                                    <input
+                                        type="time"
+                                        class="form-control"
+                                        id="time"
+                                        name="time"
+                                        min="00:00" max="23:00"
+                                        value="{{date.time}}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group col-md-5">
+
                         <div class="form-group">
                             <label for="event-image">Event Image</label>
+                            <br>
+                            <img src="{{image}}" width="60%" alt="{{name}} image">
                             <input
                                 type="file"
                                 class="form-control"
@@ -85,27 +85,36 @@
                         
                         <br>
 
-                        <label for="address">Address</label>
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="address"
-                                name="addressUser"
-                                value="{{address}}"
-                                required
-                        />
+                        <div class="form-group">
 
-                        <br>
+                            <label for="address">Address</label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="address"
+                                    name="addressUser"
+                                    value="{{address}}"
+                                    required
+                            />
 
-                        <button
-                            type="button"
-                            class="btn btn-primary d-block"
-                            id="submit"
-                        >Locate</button>
-                            
-                        <input id="located-address" class="form-control" name="address" hidden></input>
-                        <input id="located-latitude" class="form-control" name="lat" hidden></input>
-                        <input id="located-longitude" class="form-control" name="lng" hidden></input>
+                            <small id="located-address-show"></small>
+
+                            <br>
+
+                            <button
+                                type="button"
+                                class="btn btn-primary d-block"
+                                id="submit"
+                            >Locate</button>
+                                
+                            <input id="located-address" class="form-control" name="address" value="{{address}}" hidden></input>
+                            <input id="located-latitude" class="form-control" name="lat" value="{{location.coordinates.[0]}}" hidden></input>
+                            <input id="located-longitude" class="form-control" name="lng" value="{{location.coordinates.[1]}}" hidden></input>
+
+
+
+                        </div>
+
                     </div>
 
                     <div class="col-md-7">
@@ -114,19 +123,15 @@
 
                 </div>
 
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-block"
-                >Edit event</button>
+                <button type="submit" class="btn btn-dark btn-block"> Edit event</button>
+
             </form>
         </div>
     </div>
-
 </div>
 
 <script src="../../js/maps/mapStyles.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../../js/maps/searchAddress.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXr7ulrn0s_L3XB6wxBClITp6RNzz3bbc&callback=initMap"
-></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXr7ulrn0s_L3XB6wxBClITp6RNzz3bbc&callback=initMap"></script>
+

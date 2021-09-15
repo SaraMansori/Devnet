@@ -101,6 +101,15 @@ router.get("/edit", (req, res) => {
         .catch((err) => console.log(err));
 });
 
+router.post("/edit", CDNupload.single("image"), (req, res) => {
+    const { id } = req.query;
+    const { name, description, date, location, address } = req.body;
+
+    Event.findByIdAndUpdate(id, { name, description, date, location, address })
+        .then((event) => res.redirect("/events/list"))
+        .catch((err) => console.log(err));
+});
+
 router.post("/edit");
 
 module.exports = router;
