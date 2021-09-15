@@ -5,23 +5,25 @@
     <div class="row">
 
         {{#each users}}
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img
-                        class="card-img-top"
-                        src="{{image}}"
-                        alt="{{name}} profile image"
-                    />
-                    <div class="card-body">
-                        <h5 class="card-title">{{username}}</h5>
-                        <p class="card-text">{{description}}</p>
-                        <a href="/community/details?id={{id}}" class="btn btn-primary"> Check details </a>
-                        
-                        <a href="/community/follow?id={{id}}" class="btn btn-primary"> Follow </a>
-                        <a href="/community/message?id={{id}}" class="btn btn-primary"> Unfollow </a>
-                    </div>
+
+        <div class="col-3">
+            <div class="card">
+                <img class="card-img-top" src="{{image}}" alt="{{name}} profile image" />
+                <div class="card-body">
+                    <h5 class="card-title">{{username}}</h5>
+                    <p class="card-text">{{role}}</p>
+
+                    <a href="/community/details?id={{_id}}" class="btn btn-dark btn-sm"> Check details </a>
+
+                    {{#if isFollower}}
+                    <a href="/user/unfollow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Unfollow </a>
+                    {{else}}
+                    <a href="/user/follow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Follow </a>
+                    {{/if}}
+
                 </div>
             </div>
+        </div>
         {{/each}}
 
     </div>

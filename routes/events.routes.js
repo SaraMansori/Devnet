@@ -95,7 +95,7 @@ router.get("/details", (req, res) => {
             let isOwner = checkOwner(event.owner.id.toString(), req.session.currentUser._id.toString())
             let isParticipant = checkParticipant(event.participants, req.session.currentUser._id)
             let canJoin = !isOwner && !isParticipant
-            res.render("events/details", {event, canJoin});
+            res.render("events/details", {event, isOwner, isParticipant, canJoin});
         })
         .catch((err) => console.log(err));
 });
@@ -143,6 +143,7 @@ router.post("/delete", (req, res) => {
 });
 
 router.get("/join", (req, res) => {
+    
     const {id} = req.query
     const participant = req.session.currentUser._id
 
@@ -159,6 +160,28 @@ router.get("/join", (req, res) => {
             .populate()
         })
         .then((event) => res.redirect(`/events/details?id=${id}`))
+        .catch((err) => console.log(err));
+})
+
+router.get("/delete", (req, res) => {
+    
+    const {id} = req.query
+    const participant = req.session.currentUser._id
+
+    Event
+        .findById(id)
+        .then((event) => {
+            //to prevent the user from removing himself from an event which has not joined
+            if (!checkParticipant(event.participants, req.session.currentUser._id)) {
+                res.redirect(`/events/details?id=${id}`)
+                return
+            }
+            
+            return Event
+            .findByIdAndUpdate(id, {$pull: { participants: participant }})
+            .populate()
+        })
+        .then(() => res.redirect(`/events/details?id=${id}`))
         .catch((err) => console.log(err));
 })
 

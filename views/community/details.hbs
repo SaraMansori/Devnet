@@ -1,0 +1,65 @@
+<div class="container orange-container">
+
+    <h1 style="color: white">Details of {{user.username}}</h1>
+
+    <div class="row">
+
+        <div class="col-6">
+            <img src="{{user.image}}" alt="{{user.username}} image">
+
+            <ul>
+                <li>Username: {{user.username}}</li>
+                <li>Role: {{user.role}}</li>
+                <li>Description: {{user.description}}</li>
+
+                {{#if user.isFollower}}
+                <a href="/user/unfollow?id={{user._id}}&view=details" class="btn btn-primary"> Unfollow </a>
+                {{else}}
+                <a href="/user/follow?id={{user._id}}&view=details" class="btn btn-primary"> Follow </a>
+                {{/if}}
+
+            </ul>
+
+        </div>
+
+        <div class="col-6">
+            <h2>Events created by {{user.name}}</h2>
+
+            <ul>
+                {{#each createdEvents}}
+                <li>{{name}}</li>
+                <small>{{address}}</small>
+                {{/each}}
+            </ul>
+
+            <h2>Events to which {{user.name}} will assist to</h2>
+
+            <ul>
+                {{#each participatingEvents}}
+                <li>{{name}}</li>
+                <small>{{address}}</small>
+                {{/each}}
+            </ul>
+
+            <h2>Followers</h2>
+
+            <ul>
+                {{#each user.followers}}
+                <img src="{{image}}" alt="">
+                <li>{{username}}</li>
+                {{/each}}
+            </ul>
+
+            <h2>Following</h2>
+
+            <ul>
+                <li>Uno</li>
+                <li>Dos</li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</div>
