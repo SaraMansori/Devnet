@@ -37,6 +37,7 @@ router.get('/', (req, res, next) => {
           const date = response.pub_date
 
           return Article.create({image, title, headline, date, author})
+          
           })
           
           Promise.all(promisesArray)
