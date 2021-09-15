@@ -64,7 +64,7 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
 
     const location = {
         type: "Point",
-        coordinates: [lat, lng],
+        coordinates: [lng, lat],
     };
 
     const fullDate = `${date}T${time}`;

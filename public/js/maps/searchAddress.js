@@ -2,9 +2,10 @@ function initMap() {
     let lat;
     let lng;
 
+    //only on edit view
     if (
-        document.querySelector("#event-lat") &&
-        document.querySelector("#event-lat")
+        document.querySelector("#located-latitude") &&
+        document.querySelector("#located-longitude")
     ) {
         lat = parseFloat(document.querySelector("#event-lat").value);
         lng = parseFloat(document.querySelector("#event-lng").value);
@@ -33,6 +34,9 @@ function geocodeAddress(geocoder, resultsMap) {
     let address = document.getElementById("address").value;
 
     geocoder.geocode({ address: address }, function (results, status) {
+
+        
+
         document.querySelector("#located-address").value =
             results[0].formatted_address;
 
