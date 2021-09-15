@@ -10,7 +10,7 @@ router.post('/registro', (req, res) => {
     const { username, userPwd } = req.body 
 
     if (userPwd.length === 0) {       
-        res.render('auth/signup', { errorMsg: 'La contraseña es obligatoria' })
+        res.render('auth/signup', { errorMsg: 'Password is mandatory' })
         return
     }
 
@@ -19,7 +19,7 @@ router.post('/registro', (req, res) => {
         .then( user => {
 
             if (user) {                   
-                res.render('auth/signup', { errorMsg: 'Usuario ya registrado' })
+                res.render('auth/signup', { errorMsg: 'Already registered user' })
                 return
             }
 
@@ -29,11 +29,34 @@ router.post('/registro', (req, res) => {
 
             User
                 .create({ username, password: hashPass })        
-                .then(() => res.render('./../views/form'))
+                .then((user) => res.redirect(`/registro/info/${user.id}`))
                 .catch(err => console.log(err))
+    
+        
 
         })
         .catch(err => console.log(err))
+})
+
+router.get("/registro/info/:id", (req, res) => {
+    res.render('./../views/form')
+
+    
+    router.post('/registro/info/:id',(req, res,) => {
+
+
+        const {id} = req.params
+        const { email, description, role, profession } = req.body
+    
+        User
+        .findByIdAndUpdate(id, {email, description, role, profession}, { new: true })
+        .then(()=> res.redirect('/'))
+        .catch(err => console.log(err))
+
+
+
+    })
+
 })
 
 
@@ -45,7 +68,7 @@ router.post('/iniciar-sesion', (req, res) => {
     const { username, userPwd } = req.body
 
     if (userPwd.length === 0 || username.length === 0) {
-        res.render('auth/login', { errorMsg: 'Rellena los campos' })
+        res.render('auth/login', { errorMsg: 'Fill in the fields' })
         return
     }
 
@@ -54,12 +77,12 @@ router.post('/iniciar-sesion', (req, res) => {
         .then(user => {
 
             if (!user) {
-                res.render('auth/login', { errorMsg: 'Usuario no reconocido' })
+                res.render('auth/login', { errorMsg: 'User not recognised' })
                 return
             }
 
             if (bcrypt.compareSync(userPwd, user.password) === false) {
-                res.render('auth/login', { errorMsg: 'Contraseña incorrecta' })
+                res.render('auth/login', { errorMsg: 'Incorrect password' })
                 return
             }
 
@@ -69,7 +92,6 @@ router.post('/iniciar-sesion', (req, res) => {
         .catch(err => console.log(err))
 
 })
-
 
 router.get('/cerrar-sesion', (req, res) => {
     req.session.destroy(() => res.redirect('/'))

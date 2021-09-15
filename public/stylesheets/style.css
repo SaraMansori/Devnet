@@ -186,7 +186,7 @@ body::-webkit-scrollbar {
 }
 
 #errorMessage {
-    background-color: red;
+    background-color: #ff8159;
     color: white;
     margin: 10px 0;
     padding: 10px;
@@ -231,9 +231,27 @@ body::-webkit-scrollbar {
 
 .space {
   padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 100px;
 }
 
 .pad{
   padding: 100px;
+}
+
+.spaceSi{
+    padding-top: 50px;
+}
+.color{
+    background-color: rgb(33, 37, 41);
+    color: white;
+}
+.text{
+    text-align: center;
+    padding-top: 50px;
+}
+.textTwo{
+    font-size: 10px;
+}
+.textThree{
+    font-size: 15px;
 }

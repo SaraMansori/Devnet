@@ -1,42 +1,41 @@
 <div class="container">
 
-    <div class="row justify-content-center space">
+    <div class="row justify-content-center spaceSi">
 
         <div class="col-md-4">
 
-            <h1 class="loginCenter">Registro de usuario</h1>
-            <br>
+            <h3 class="loginCenter">SIGN UP</h3>
             <hr>
-            <br>
-
             <form action="/registro" method="POST" class="spaceOne">
                 <div class="form-group">
-                    <label for="username">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="username" name="username">
+                    <label for="username"></label>
+                    <input placeholder="Username" type="text" class="form-control" id="username" name="username">
                 </div>
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="userPwd">
+                    <label for="password"></label>
+                    <input placeholder="Password" type="password" class="form-control" id="password" name="userPwd">
                 </div>
 
                 <br>
-            
+
                 <div class="centerPolicy">
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">
-                        I want to receive news and personalized commercial communications from -NAME PAG -through email and other means.</label>
+                            I want to receive news and personalized commercial communications from -NAME PAG -through
+                            email and other means.</label>
                     </div>
                     <hr>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">
-                        I have been able to read and understand the information on the use of my personal data explained in the Privacy Policy.</label>
+                            I have been able to read and understand the information on the use of my personal data
+                            explained in the Privacy Policy.</label>
                     </div>
                 </div>
                 <br>
 
-                <button href="/form" type="submit" class="btn btn-dark btn-block">Registrarme</button>
+                <button href="/form" type="submit" class="btn btn-dark btn-white">Sign up</button>
             </form>
 
             {{#if errorMsg}}
@@ -50,4 +49,3 @@
 
 
 </div>
-

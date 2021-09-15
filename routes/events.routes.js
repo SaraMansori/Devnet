@@ -55,7 +55,6 @@ router.get("/new", (req, res) => {
 
 router.post("/new", CDNupload.single("image"), (req, res) => {
     const { name, description, date, city, street } = req.body;
-    res.send(req.body);
 
     Event.create({
         name,

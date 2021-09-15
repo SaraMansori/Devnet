@@ -8,7 +8,7 @@ const eventSchema = new Schema(
             unique: true,
             required: true,
             minlength: 1,
-            maxlength: 15,
+            maxlength: 50,
             //match: /^\S+$/,
             trim: true,
         },

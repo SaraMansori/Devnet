@@ -1,22 +1,28 @@
-<div class="container">
+<div class="container ">
 
-    <h1>WELCOME ----> API THE NEW YORK TIME</h1>
-    <hr>
     <div class="row">
-        {{#each docs}}
-        <div class="col-md-3 space">
-
-            <div class="card" style="width: 18rem;">
-                {{#if multimedia}}
-                <img src="https://static01.nyt.com/{{multimedia.2.url}}" class="card-img-top" alt="image">
-                {{/if}}
-                <div class="card-body">
-                    <p class="card-text">{{abstract}}</p>
-                    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        <h3 class="text">Technology sector news</h3>
+        {{#each allArticles}}
+            <div class="col-md-4 space">
+                <div class="card color" style="width: 15rem;">
+                        <img src="{{image}}" alt="">
+                    <br>
+                    {{title}}
+                    <hr>
+                    <div class="">
+                        <p class="textThree">{{headline}}</p>
+                    </div>
+                    <hr>
+                    <h5 class="textTwo">{{author}}</h5>
+                    <h5 class="textTwo">{{date}}</h5>
+                    <hr>
+                    {{#if multimedia}} 
+                    <img src="https://static01.nyt.com/{{multimedia.1.url}}" class="card-img-top" alt="image">
+                   {{/if}}
                 </div>
             </div>
-        </div>
         {{/each}}
+
     </div>
-    <hr>
+    
 </div>
