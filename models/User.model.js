@@ -39,10 +39,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Events'
   }],
-  'created-events': [{
-    type: Schema.Types.ObjectId,
-    ref: 'Events'
-  }],
+  //'created-events': [{
+  //  type: Schema.Types.ObjectId,
+  //  ref: 'Events'
+  //}],
   profession:[{
     type: String,
     default: 'UNKOWN',

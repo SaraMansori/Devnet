@@ -3,7 +3,8 @@ const axios = require("axios");
 const { Model } = require("mongoose");
 const CDNupload = require("../config/upload.config");
 const Event = require("../models/Event.model");
-const { formatDate, formatTime, capitalize } = require("../utils");
+const User = require("../models/User.model");
+const { formatDate, formatTime, checkOwner, checkParticipant } = require("../utils");
 
 router.get("/auth", (req, res) => {
     res.redirect(
@@ -57,6 +58,8 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/new", CDNupload.single("image"), (req, res) => {
+
+    const owner = req.session.currentUser._id
     const { name, description, date, address, lat, lng, time } = req.body;
 
     const location = {
@@ -72,6 +75,7 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
         date: fullDate,
         address,
         location,
+        owner,
         image: req.file?.path,
     })
         .then(() => {
@@ -83,17 +87,25 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
 router.get("/details", (req, res) => {
     const { id } = req.query;
 
-    Event.findById(id)
+    Event
+        .findById(id)
+        .populate("owner")
+        .populate("participants")
         .then((event) => {
-            res.render("events/details", event);
+            let isOwner = checkOwner(event.owner.id.toString(), req.session.currentUser._id.toString())
+            let isParticipant = checkParticipant(event.participants, req.session.currentUser._id)
+            let canJoin = !isOwner && !isParticipant
+            res.render("events/details", {event, canJoin});
         })
         .catch((err) => console.log(err));
 });
 
 router.get("/edit", (req, res) => {
     const { id } = req.query;
+    console.log('Objeto file de Multer:', req.file)
 
-    Event.findById(id)
+    Event
+        .findById(id)
         .lean()
         .then((event) => {
             event.date.fullDate = formatDate(event.date);
@@ -103,15 +115,51 @@ router.get("/edit", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-router.post("/edit", CDNupload.single("image"), (req, res) => {
+router.post("/edit", CDNupload.single("new-image"), (req, res) => {
     const { id } = req.query;
     const { name, description, date, location, address } = req.body;
+    let image = ""
 
-    Event.findByIdAndUpdate(id, { name, description, date, location, address })
-        .then((event) => res.redirect("/events/list"))
+    if (req.file) {
+        image = req.file.path
+    } else {
+        image = req.body.image
+    }
+
+    Event
+        .findByIdAndUpdate(id, { name, description, date, location, image, address })
+        .then(() => res.redirect(`/events/details?id=${id}`))
         .catch((err) => console.log(err));
 });
 
-router.post("/edit");
+router.post("/delete", (req, res) => {
+    const {id} = req.body
+
+    Event
+        .findByIdAndDelete(id)
+        .then(()=>res.redirect("/events/list"))
+        .catch((err) => console.log(err));
+
+});
+
+router.get("/join", (req, res) => {
+    const {id} = req.query
+    const participant = req.session.currentUser._id
+
+    Event
+        .findById(id)
+        .then((event) => {
+            //to prevent the user from joining multiple times through the url
+            if (checkParticipant(event.participants, req.session.currentUser._id)) {
+                res.redirect(`/events/details?id=${id}`)
+                return
+            }
+            return Event
+            .findByIdAndUpdate(id, {$push: { participants: participant }})
+            .populate()
+        })
+        .then((event) => res.redirect(`/events/details?id=${id}`))
+        .catch((err) => console.log(err));
+})
 
 module.exports = router;

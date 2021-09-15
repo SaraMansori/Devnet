@@ -16,4 +16,9 @@ module.exports = {
         let minutes = date.getMinutes().toString().padStart(2, "0");
         return [hour, minutes].join(":");
     },
+
+    checkOwner: (eventOwnerId, currUserId) => eventOwnerId === currUserId,
+
+    checkParticipant: (eventParticipantsArr, currUserId) => eventParticipantsArr.some(id => id.equals(currUserId))
+    
 };

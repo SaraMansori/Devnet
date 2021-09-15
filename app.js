@@ -1,6 +1,6 @@
 require("dotenv/config");
-require("./db");
 
+require("./db");
 
 const express = require("express");
 const app = express();
@@ -8,9 +8,8 @@ require("./config")(app);
 app.locals.title = `devnet`;
 
 
-require("./routes/index")(app)
 require('./config/session.config')(app)
-const hbs = require("hbs");
+require("./routes/index")(app)
 
 require("./error-handling")(app);
 

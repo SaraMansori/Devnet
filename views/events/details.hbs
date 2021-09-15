@@ -4,22 +4,23 @@
 
         <div class="col-10">
 
-            <h1>{{name}}</h1>
+            <h1>{{event.name}}</h1>
 
             <hr />
 
-            <img width="80%" src="{{image}}" alt="{{name}} image " />
+            <img width="80%" src="{{event.image}}" alt="{{event.name}} image " />
 
             <ul>
-                <li> <b>Description: </b> {{description}}</li>
-                <li> <b>Date:</b> {{date}}</li>
-                <li> <b>Location:</b> <span id="address">{{address}}</span></li>
-            </ul>
+                <li> <b>Description: </b> {{event.description}}</li>
+                <li> <b>Date:</b> {{event.date}}</li>
+                <li> <b>Location:</b> <span id="address">{{event.address}}</span></li>
+                <li> <b>Event Creator:</b> {{event.owner.username}} </li>
+                <li> <b>Participants:</b> 
+                    {{#each event.participants}}
+                        {{username}} 
+                    {{/each}}
+                </li>
 
-            <ul>
-                Attendees:
-                <li>Atendee 1</li>
-                <li>Atendee 2</li>
             </ul>
 
             <div class="col-md-7">
@@ -30,17 +31,20 @@
 
             <div class="row justify-content-between">
 
-                <div class="col-3">
-                    <a href="#" type="button" class="btn btn-primary">Join</a>
-                </div>
-                <div class="col-6">
-                    <a
-                        href="/events/edit?id={{id}}"
-                        type="button"
-                        class="btn btn-dark"
-                    >Edit Event</a>
-                    <a href="#" type="button" class="btn btn-danger">Delete
-                        Event</a>
+                {{#if canJoin}}
+                    <div class="col-3">
+                        <a href="/events/join?id={{event.id}}" type="button" class="btn btn-primary">Join</a>
+                    </div>
+                {{/if}}
+
+                <div class="col-6 d-flex">
+                    <a href="/events/edit?id={{event.id}}" type="button" class="btn btn-dark"> Edit Event </a>
+
+                    <form method="POST" action="/events/delete">
+                        <input type="text" value="{{event.id}}" name="id" hidden>
+                        <button type="submit" class="btn btn-danger"> Delete Event </button>
+                    <form>
+
                 </div>
 
             </div>

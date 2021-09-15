@@ -45,12 +45,10 @@ const eventSchema = new Schema(
                 ref: "User",
             },
         ],
-        owner: [
-            {
+        owner:{
                 type: Schema.Types.ObjectId,
                 ref: "User",
             },
-        ],
     },
     {
         timestamps: true,
