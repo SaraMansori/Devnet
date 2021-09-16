@@ -33,7 +33,7 @@ const articleSchema = new Schema({
 },
   {
   timestamps: true
-}
+  }
 );
 
 const Article = model("Article", articleSchema);

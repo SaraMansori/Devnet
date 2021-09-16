@@ -5,6 +5,7 @@ const CDNupload = require("../config/upload.config");
 const Event = require("../models/Event.model");
 const User = require("../models/User.model");
 const { formatDate, formatTime, checkOwner, checkParticipant } = require("../utils");
+const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 
 router.get("/auth", (req, res) => {
     res.redirect(
@@ -12,7 +13,7 @@ router.get("/auth", (req, res) => {
     );
 });
 
-router.get("/list", (req, res, next) => {
+router.get("/list", isLoggedIn, (req, res, next) => {
     //WIP
 
     const eventBrite = () => {
@@ -53,7 +54,7 @@ router.get("/list", (req, res, next) => {
     });
 });
 
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     res.render("events/new");
 });
 
@@ -84,7 +85,7 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
         .catch((err) => console.log(err));
 });
 
-router.get("/details", (req, res) => {
+router.get("/details",isLoggedIn, (req, res) => {
     const { id } = req.query;
 
     Event
@@ -100,7 +101,7 @@ router.get("/details", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-router.get("/edit", (req, res) => {
+router.get("/edit", isLoggedIn, (req, res) => {
     const { id } = req.query;
     console.log('Objeto file de Multer:', req.file)
 
@@ -115,7 +116,7 @@ router.get("/edit", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-router.post("/edit", CDNupload.single("new-image"), (req, res) => {
+router.post("/edit", isLoggedIn, CDNupload.single("new-image"), (req, res) => {
     const { id } = req.query;
     const { name, description, date, location, address } = req.body;
     let image = ""
@@ -132,7 +133,7 @@ router.post("/edit", CDNupload.single("new-image"), (req, res) => {
         .catch((err) => console.log(err));
 });
 
-router.post("/delete", (req, res) => {
+router.post("/delete", isLoggedIn, (req, res) => {
     const {id} = req.body
 
     Event
@@ -142,7 +143,7 @@ router.post("/delete", (req, res) => {
 
 });
 
-router.get("/join", (req, res) => {
+router.get("/join", isLoggedIn,(req, res) => {
     
     const {id} = req.query
     const participant = req.session.currentUser._id
@@ -163,7 +164,7 @@ router.get("/join", (req, res) => {
         .catch((err) => console.log(err));
 })
 
-router.get("/delete", (req, res) => {
+router.get("/delete", isLoggedIn, (req, res) => {
     
     const {id} = req.query
     const participant = req.session.currentUser._id

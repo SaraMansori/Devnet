@@ -6,8 +6,9 @@ const User = require("../models/User.model");
 const Comment = require("../models/Comment.model");
 const mongoose = require('mongoose');
 const {checkFollower, formatDate, formatTime} = require("../utils");
+const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 
-router.get("/", (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
 
     User
         .find({_id: {$ne: req.session.currentUser._id}}) //REVISAR
@@ -21,7 +22,7 @@ router.get("/", (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.get("/details", (req, res) => {
+router.get("/details", isLoggedIn, (req, res) => {
     const { id } = req.query
     let user = {}
     const createdEvents = []

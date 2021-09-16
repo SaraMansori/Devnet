@@ -4,12 +4,12 @@ const User = require("../models/User.model")
 
 
 // Signup
-router.get('/registro', (req, res) => res.render('auth/signup'))
-router.post('/registro', (req, res) => {
+router.get('/signup', (req, res) => res.render('auth/signup'))
+router.post('/signup', (req, res) => {
 
     const { username, userPwd } = req.body 
 
-    if (userPwd.length === 0) {       
+    if (userPwd.length === 0 || username.length === 0) {       
         res.render('auth/signup', { errorMsg: 'Password is mandatory' })
         return
     }
@@ -29,7 +29,7 @@ router.post('/registro', (req, res) => {
 
             User
                 .create({ username, password: hashPass })        
-                .then((user) => res.redirect(`/registro/info/${user.id}`))
+                .then((user) => res.redirect(`/signup/info/${user.id}`))
                 .catch(err => console.log(err))
     
         
@@ -38,32 +38,28 @@ router.post('/registro', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.get("/registro/info/:id", (req, res) => {
+router.get("/signup/info/:id", (req, res) => {
     res.render('./../views/form')
 
-    
-    router.post('/registro/info/:id',(req, res,) => {
-
-
-        const {id} = req.params
-        const { email, description, role, profession } = req.body
-    
-        User
-        .findByIdAndUpdate(id, {email, description, role, profession}, { new: true })
-        .then(()=> res.redirect('/iniciar-sesion'))
-        .catch(err => console.log(err))
-
-
-
-    })
 
 })
 
+router.post('/signup/info/:id',(req, res,) => {
+
+
+    const {id} = req.params
+    const { email, description, profession } = req.body
+
+    User
+    .findByIdAndUpdate(id, {email, description, profession}, { new: true })
+    .then(()=> res.redirect(`/profile/${id}`)) 
+    .catch(err => console.log(err))
+})
 
 
 // Login
-router.get('/iniciar-sesion', (req, res) => res.render('auth/login'))
-router.post('/iniciar-sesion', (req, res) => {
+router.get('/login', (req, res) => res.render('auth/login'))
+router.post('/login', (req, res) => {
 
     const { username, userPwd } = req.body
 
@@ -93,7 +89,7 @@ router.post('/iniciar-sesion', (req, res) => {
 
 })
 
-router.get('/cerrar-sesion', (req, res) => {
+router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
 })
 
