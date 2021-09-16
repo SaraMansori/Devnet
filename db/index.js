@@ -8,7 +8,7 @@ mongoose
   .connect(process.env.DB_REMOTE)
   .then((x) => {
     console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+      `Connected to Mongo! Database name: "${x.connetions[0].name}"`
     );
   })
   .catch((err) => {
