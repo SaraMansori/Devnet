@@ -33,6 +33,14 @@ const eventSchema = new Schema(
             type: String,
         },
 
+        city: {
+            type: String,
+        },
+
+        country: {
+            type: String,
+        },
+
         image: {
             type: String,
             required: true,
