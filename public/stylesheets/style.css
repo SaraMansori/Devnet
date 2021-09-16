@@ -127,22 +127,32 @@ body::-webkit-scrollbar {
     margin-top: -40px;
 }
 
-.card{
+.card-container{
     padding: 1rem;
-    height: 100%;
-    max-height: 400px;
+    margin-bottom: 1rem;
 }
+
+.card {
+    height: 100%;
+}
+
 
 .filters{
     padding: 2rem 2rem 0 2rem;
     background-color: #596aff ;
+    border-radius: 0 12px 12px 0;
     height: inherit;
 }
 
 .cards-block {
     background-color: #596aff;
+    margin-bottom: 2rem;
     width: 100vw;
     padding: 5rem;
+}
+
+.cards-row {
+    margin-left: 3rem;
 }
 
 .landing-card,
@@ -167,13 +177,31 @@ body::-webkit-scrollbar {
     color: #596aff;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 .orange-container,
 .new-event {
     color: white;
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
-    padding: 3rem 6rem 3rem 6rem
+    padding: 0rem 0rem 0rem 2rem
+}
+
+.community-container {
+    color: white;
+    margin-top: 80px;
+    background-color: #ff8159;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.community-container img {
+    width: 8rem;
 }
 
 .orange-container h1 {

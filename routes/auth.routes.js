@@ -7,6 +7,7 @@ const User = require("../models/User.model")
 router.get('/signup', (req, res) => res.render('auth/signup'))
 router.post('/signup', (req, res) => {
 
+
     const { username, userPwd } = req.body 
 
     if (userPwd.length === 0 || username.length === 0) {       
@@ -39,21 +40,26 @@ router.post('/signup', (req, res) => {
 })
 
 router.get("/signup/info/:id", (req, res) => {
-    res.render('./../views/form')
 
+    const id = req.params
+    res.render('./../views/form', id)
 
 })
 
 router.post('/signup/info/:id',(req, res,) => {
 
-
     const {id} = req.params
     const { email, description, profession } = req.body
 
     User
-    .findByIdAndUpdate(id, {email, description, profession}, { new: true })
-    .then(()=> res.redirect(`/profile/${id}`)) 
-    .catch(err => console.log(err))
+        .findById(id)
+        .then((user) => {
+            req.session.currentUser = user
+            req.app.locals.userLogged = true
+            return User.findByIdAndUpdate(id, {email, description, profession}, { new: true })
+        })
+        .then(()=> res.redirect(`/user/profile`)) 
+        .catch(err => console.log(err))
 })
 
 
@@ -83,6 +89,7 @@ router.post('/login', (req, res) => {
             }
 
             req.session.currentUser = user
+            req.app.locals.userLogged = true
             res.redirect('/user/profile')
         })
         .catch(err => console.log(err))
@@ -91,6 +98,7 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
+    req.app.locals.userLogged = false
 })
 
 

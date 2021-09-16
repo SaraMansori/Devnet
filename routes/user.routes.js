@@ -36,7 +36,6 @@ router.get('/profile', isLoggedIn, (req, res) => {
             return User.findById(id).populate("followers").populate("following").populate("articles")
         })
         .then((user) => {
-            console.log(user)
             res.render('user/profile', { user, createdEvents, participatingEvents, userComments })
         })
 
@@ -90,8 +89,6 @@ router.post("/comment", (req, res) => {
 
     const {id, text} = req.body
     const owner = req.session.currentUser._id
-
-    console.log(owner)
 
     Comment
         .create({text, owner, receiver: id, date: Date.now()})
