@@ -49,36 +49,32 @@ router.post('/signup/info/:id',(req, res,) => {
 
 
     const {id} = req.params
-    const { email, description, profession } = req.body
+    const { email, description, profession, username } = req.body
 
     User
     .findByIdAndUpdate(id, {email, description, profession}, { new: true })
     .then(()=> res.redirect(`/user/profile/${id}`)) 
     .catch(err => console.log(err))
+
+
+    
+    transporter
+    .sendMail({
+        from: `Welcome to devnet <devnethubsocial@gmail.com>`,
+        to: email,
+        subject: 'Thank you for sign up',
+        text: 'We are proud to have you.',
+        html: `<b>We are proud to have you in our social network. 
+        Come in to see our events and meet people.
+        .</b>`
+        
+    })
+    .then(info => res.send(info))
+    .catch(error => console.log(error))
+    
 })
 
-// router.post("/signup/info/:id", (req, res, next) => {
 
-//     const {id} = req.params
-//     User
-//     .findById(id)
-//     .then((user)=> console.log(user))
-
-//     const { name, subject, to, text } = req.body
-//     const userMail = req.session.currentUser._id
-  
-//     transporter
-//       .sendMail({
-//         from: `Welcome to devnet ${name} <devnethubsocial@gmail.com>`,
-//         to: //email usuario registrado user.mail
-//         subject,
-//         text,
-//         html: `<b>${text}</b>`
-//       })
-//       .then(info => res.send(info))
-//       .catch(error => console.log(error))
-  
-//   })
 
 router.get('/login', (req, res) => res.render('auth/login'))
 router.post('/login', (req, res) => {
@@ -105,7 +101,7 @@ router.post('/login', (req, res) => {
             }
 
             req.session.currentUser = user
-            res.redirect('/user/profile')
+            res.redirect(`/user/profile/${id}`)
         })
         .catch(err => console.log(err))
 
@@ -113,6 +109,17 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
+})
+router.get('/profile/:id', (req, res, next ) =>{
+
+    const {id} = req.params
+    
+    
+    User
+    .findById(id)
+    .then((user) =>res.render('./../views/profiles/views',user))
+    .catch(err => console.log(err))
+
 })
 
 
