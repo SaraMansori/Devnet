@@ -12,11 +12,11 @@
                 <li>Role: {{user.role}}</li>
                 <li>Description: {{user.description}}</li>
 
-                {{#if user.isFollower}}
-                <a href="/user/unfollow?id={{user._id}}&view=details" class="btn btn-primary"> Unfollow </a>
-                {{else}}
-                <a href="/user/follow?id={{user._id}}&view=details" class="btn btn-primary"> Follow </a>
-                {{/if}}
+                    {{#if user.isFollower}}
+                    <a href="/user/unfollow?id={{user._id}}&view=details" class="btn btn-primary"> Unfollow </a>
+                    {{else}}
+                    <a href="/user/follow?id={{user._id}}&view=details" class="btn btn-primary"> Follow </a>
+                    {{/if}}
 
             </ul>
 

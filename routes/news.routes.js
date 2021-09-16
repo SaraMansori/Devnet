@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Article = require('../models/Article.model')
 const axios = require("axios")
 const User = require("../models/User.model")
-const { getRandomImage, newsImages, formatDate, checkBookmark, isLoggedIn } = require("../utils");
+const { getRandomImage, newsImages, formatDate, checkBookmark, loggedIn } = require("../utils");
 
 
 router.get('/', (req, res, next) => {
@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
       .then(allArticles => {
           allArticles.forEach((article) => {
             article.formattedDate = formatDate(new Date(article.date))
-            isLoggedIn(req) ? article.isBookmark = checkBookmark(req.session.currentUser.articles, article.id) : null
+            loggedIn(req) ? article.isBookmark = checkBookmark(req.session.currentUser.articles, article.id) : null
           })
           res.render('news/news', {allArticles})
         })
@@ -44,8 +44,8 @@ router.get('/', (req, res, next) => {
   router.get('/bookmark', (req, res) => {
     const { id } = req.query
     
-    if (!isLoggedIn(req)) {
-      res.redirect("/registro")
+    if (!loggedIn(req)) {
+      res.redirect("/signup")
     }  else {
 
     User

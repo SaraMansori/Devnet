@@ -15,10 +15,14 @@
 
                     <a href="/community/details?id={{_id}}" class="btn btn-dark btn-sm"> Check details </a>
 
-                    {{#if isFollower}}
-                    <a href="/user/unfollow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Unfollow </a>
-                    {{else}}
-                    <a href="/user/follow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Follow </a>
+                    {{#if logged}}
+
+                        {{#if isFollower}}
+                        <a href="/user/unfollow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Unfollow </a>
+                        {{else}}
+                        <a href="/user/follow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Follow </a>
+                        {{/if}}
+
                     {{/if}}
 
                 </div>

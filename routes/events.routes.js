@@ -13,7 +13,7 @@ router.get("/auth", (req, res) => {
     );
 });
 
-router.get("/list",  (req, res, next) => {
+router.get("/list", (req, res, next) => {
     //WIP
 
     const eventBrite = () => {

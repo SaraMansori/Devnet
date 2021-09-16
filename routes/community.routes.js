@@ -5,19 +5,22 @@ const Event = require("../models/Event.model");
 const User = require("../models/User.model");
 const Comment = require("../models/Comment.model");
 const mongoose = require('mongoose');
-const {checkFollower, formatDate, formatTime} = require("../utils");
+const {checkFollower, formatDate, formatTime, loggedIn} = require("../utils");
 const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 
 router.get("/", (req, res) => {
+    
+    let logged = loggedIn(req)
+    console.log(logged)
 
     User
-        .find({_id: {$ne: req.session.currentUser._id}}) //REVISAR
+        .find({_id: {$ne: req.session.currentUser?._id}})
         .lean()
         .then((users) => {
             users.forEach((user) => {
-                user.isFollower = checkFollower(user.followers, req.session.currentUser._id)
+                user.isFollower = checkFollower(user.followers, req.session.currentUser?._id)
             })
-            res.render("community/list", {users})
+            res.render("community/list", {users, logged})
         })
         .catch(err => console.log(err))
 })

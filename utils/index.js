@@ -40,6 +40,6 @@ module.exports = {
 
     checkParticipant: (eventParticipantsArr, currUserId) => eventParticipantsArr.some(id => id.equals(currUserId)),
 
-    isLoggedIn: (req) =>  req.session.currentUser ? true: false,
+    loggedIn: (req) =>  req.session.currentUser ? true: false,
     
 };
