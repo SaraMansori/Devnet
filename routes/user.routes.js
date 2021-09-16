@@ -25,7 +25,7 @@ router.get('/profile', isLoggedIn, (req, res) => {
             return User.findById(id)
         })
         .then((user) => {
-            console.log("useeeeeeeeeeeer", user, "createdEvents", createdEvents, "participatiiiiiiiiiiing", participatingEvents)
+            console.log("useeeeeeeeeeeer", user, "followeers", user.followers, "followiiing", user.following)
             res.render('user/profile', { user, createdEvents, participatingEvents })
         })
 
