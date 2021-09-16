@@ -1,10 +1,34 @@
 const router = require("express").Router()
 const { isLoggedIn } = require('./../middleware')
 const User = require("../models/User.model")
+const Event = require("../models/Event.model")
+const Comment = require("../models/Comment.model")
 
 
-router.get('/perfil', isLoggedIn, (req, res) => {
-    res.render('user/profile', { user: req.session.currentUser })
+router.get('/profile', isLoggedIn, (req, res) => {
+
+    const id = req.session.currentUser._id
+
+    let createdEvents = []
+    let participatingEvents = []
+
+    Event
+        .find({owner: id})
+        .populate("owner")
+        .lean()
+        .then((events) => {
+            events.forEach((event) => createdEvents.push(event))
+            return Event.find({participants:id}).populate("participants")
+        })
+        .then((events) => {
+            events.forEach((event) => participatingEvents.push(event))
+            return User.findById(id)
+        })
+        .then((user) => {
+            console.log("useeeeeeeeeeeer", user, "createdEvents", createdEvents, "participatiiiiiiiiiiing", participatingEvents)
+            res.render('user/profile', { user, createdEvents, participatingEvents })
+        })
+
 })
 
 router.get("/follow", (req, res) => {
@@ -41,6 +65,22 @@ router.get("/unfollow", (req, res) => {
             }
         })
         .catch((err)=>console.log(err))
+})
+
+router.post("/comment", (req, res) => {
+
+    const {id, text} = req.body
+    const owner = req.session.currentUser._id
+
+    console.log(owner)
+
+    Comment
+        .create({text, owner, receiver: id, date: Date.now()})
+        .then((comment) => {
+            console.log("----------------", comment)
+            res.redirect(`/community/details?id=${id})`)
+    })
+    
 })
 
 module.exports = router

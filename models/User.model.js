@@ -48,10 +48,10 @@ const userSchema = new Schema({
     default: 'UNKOWN',
     enum:['WEB DEVELOPER', 'DATA ANALYTICS', 'DESIGN UX/UI', 'CIBERSECURITY','DEVOPS', 'MOBILE DEVELOPER','DESKTOP DEVELOPER',]
   }],
-  comments: [{
+  /* comments: [{
     type: Schema.Types.ObjectId,
     ref: 'Comment',
-  }],
+  }], */
   'followers': [{
     type: Schema.Types.ObjectId,
     ref: 'User'
