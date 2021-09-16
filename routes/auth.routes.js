@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
+const transporter = require('./../config/mailing.config')
 
 
 // Signup
@@ -52,12 +53,33 @@ router.post('/signup/info/:id',(req, res,) => {
 
     User
     .findByIdAndUpdate(id, {email, description, profession}, { new: true })
-    .then(()=> res.redirect(`/profile/${id}`)) 
+    .then(()=> res.redirect(`/user/profile/${id}`)) 
     .catch(err => console.log(err))
 })
 
+// router.post("/signup/info/:id", (req, res, next) => {
 
-// Login
+//     const {id} = req.params
+//     User
+//     .findById(id)
+//     .then((user)=> console.log(user))
+
+//     const { name, subject, to, text } = req.body
+//     const userMail = req.session.currentUser._id
+  
+//     transporter
+//       .sendMail({
+//         from: `Welcome to devnet ${name} <devnethubsocial@gmail.com>`,
+//         to: //email usuario registrado user.mail
+//         subject,
+//         text,
+//         html: `<b>${text}</b>`
+//       })
+//       .then(info => res.send(info))
+//       .catch(error => console.log(error))
+  
+//   })
+
 router.get('/login', (req, res) => res.render('auth/login'))
 router.post('/login', (req, res) => {
 
