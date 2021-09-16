@@ -11,7 +11,6 @@ const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 router.get("/", (req, res) => {
     
     let logged = loggedIn(req)
-    console.log(logged)
 
     User
         .find({_id: {$ne: req.session.currentUser?._id}})

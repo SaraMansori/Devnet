@@ -235,12 +235,49 @@ label {
 
 .new-event-container,
 .edit-event-container,
-.community-container {
+.community-container,
+.event-details-container {
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
     min-height: 90vh;
     margin-bottom: 4rem;
+}
+
+.event-details-container {
+    padding: 3rem;
+}
+
+.event-details-container .event-image {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.mini-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-container {
+    min-height: 90vh;
+    margin-top: 10vh;
+}
+
+.info img {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.profile-container .info {
+    background-color: #ff8159;
+    border-radius: 15px;
+    height: 100%;
 }
 
 .community-container {
