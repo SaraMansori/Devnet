@@ -35,10 +35,10 @@ const userSchema = new Schema({
     type: String,
     default: 'https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg'
   },
-  'joined-events': [{
-    type: Schema.Types.ObjectId,
-    ref: 'Events'
-  }],
+  //'joined-events': [{
+  //  type: Schema.Types.ObjectId,
+  //  ref: 'Events'
+  //}],
   //'created-events': [{
   //  type: Schema.Types.ObjectId,
   //  ref: 'Events'
@@ -48,10 +48,10 @@ const userSchema = new Schema({
     default: 'UNKOWN',
     enum:['WEB DEVELOPER', 'DATA ANALYTICS', 'DESIGN UX/UI', 'CIBERSECURITY','DEVOPS', 'MOBILE DEVELOPER','DESKTOP DEVELOPER',]
   }],
-  comments: [{
+  /* comments: [{
     type: Schema.Types.ObjectId,
     ref: 'Comment',
-  }],
+  }], */
   'followers': [{
     type: Schema.Types.ObjectId,
     ref: 'User'

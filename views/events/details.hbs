@@ -15,9 +15,9 @@
                 <li> <b>Date:</b> {{event.date}}</li>
                 <li> <b>Location:</b> <span id="address">{{event.address}}</span></li>
                 <li> <b>Event Creator:</b> {{event.owner.username}} </li>
-                <li> <b>Participants:</b> 
+                <li> <b>Participants:</b>
                     {{#each event.participants}}
-                        {{username}} 
+                    {{username}}
                     {{/each}}
                 </li>
 
@@ -31,11 +31,19 @@
 
             <div class="row justify-content-between">
 
-                {{#if canJoin}}
-                    <div class="col-3">
-                        <a href="/events/join?id={{event.id}}" type="button" class="btn btn-primary">Join</a>
-                    </div>
-                {{/if}}
+                {{#unless isOwner}}
+
+                    {{#if isParticipant}}
+                        <div class="col-3">
+                            <a href="/events/delete?id={{event.id}}" type="button" class="btn btn-primary">Cancel Attendance</a>
+                        </div>
+                    {{else}}
+                        <div class="col-3">
+                            <a href="/events/join?id={{event.id}}" type="button" class="btn btn-primary">Join</a>
+                        </div>
+                    {{/if}}
+
+                {{/unless}}
 
                 <div class="col-6 d-flex">
                     <a href="/events/edit?id={{event.id}}" type="button" class="btn btn-dark"> Edit Event </a>
@@ -43,7 +51,7 @@
                     <form method="POST" action="/events/delete">
                         <input type="text" value="{{event.id}}" name="id" hidden>
                         <button type="submit" class="btn btn-danger"> Delete Event </button>
-                    <form>
+                        <form>
 
                 </div>
 
@@ -59,5 +67,4 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../../js/maps/drawMap.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXr7ulrn0s_L3XB6wxBClITp6RNzz3bbc&callback=initMap"
-></script>
+    src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap"></script>

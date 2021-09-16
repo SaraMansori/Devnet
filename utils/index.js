@@ -31,6 +31,8 @@ module.exports = {
     ],
 
     getRandomImage: (arr) => arr[Math.round(Math.random() * (arr.length-1))],
+    
+    checkFollower: (userFollowers, currUserId) => userFollowers.some(id => id.equals(currUserId)),
 
     checkOwner: (eventOwnerId, currUserId) => eventOwnerId === currUserId,
 

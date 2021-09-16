@@ -7,8 +7,8 @@ function initMap() {
         document.querySelector("#located-latitude") &&
         document.querySelector("#located-longitude")
     ) {
-        lat = parseFloat(document.querySelector("#event-lat").value);
-        lng = parseFloat(document.querySelector("#event-lng").value);
+        lat = parseFloat(document.querySelector("#located-latitude").value);
+        lng = parseFloat(document.querySelector("#located-longitude").value);
     } else {
         lat = 40.4333665;
         lng = -3.704265999999999;

@@ -6,101 +6,63 @@
 
             <h1 style="color: white">Create new event</h1>
 
-            <form
-                method="POST"
-                action="/events/new"
-                enctype="multipart/form-data"
-            >
-                
+            <form method="POST" action="/events/new" enctype="multipart/form-data">
+
 
                 <div class="row">
 
                     <div class="col-12">
 
                         <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                    />
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea
-                        class="form-control"
-                        id="description"
-                        rows="3"
-                        name="description"
-                    ></textarea>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input
-                                type="date"
-                                class="form-control"
-                                id="date"
-                                name="date"
-                            />
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" />
                         </div>
-                    </div>
-                    <div class="col-2">
+
                         <div class="form-group">
-                            <label for="time">Hour</label>
-                            <input
-                                type="time"
-                                class="form-control"
-                                id="time"
-                                name="time"
-                                min="00:00" max="23:00"
-                            />
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                         </div>
-                    </div>
-                    
-                </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input type="date" class="form-control" id="date" name="date" />
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="time">Hour</label>
+                                    <input type="time" class="form-control" id="time" name="time" min="00:00"
+                                        max="23:00" />
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
 
                     <div class="form-group col-md-5">
                         <div class="form-group">
                             <label for="event-image">Event Image</label>
-                            <input
-                                type="file"
-                                class="form-control"
-                                id="event-image"
-                                name="image"
-                            />
+                            <input type="file" class="form-control" id="event-image" name="image" />
                         </div>
-                        
+
                         <br>
 
                         <label for="address">Address</label>
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="address"
-                                name="addressUser"
-                                required
-                        />
+                        <input type="text" class="form-control" id="address" name="addressUser" required />
 
                         <small id="located-address-show"></small>
 
                         <br>
 
-                        <button
-                            type="button"
-                            class="btn btn-primary d-block"
-                            id="submit"
-                        >Locate</button>
-                            
+                        <button type="button" class="btn btn-primary d-block" id="submit">Locate</button>
+
                         <input id="located-address" class="form-control" name="address" hidden></input>
-                        <input id="located-latitude" class="form-control" name="lat" ></input>
-                        <input id="located-longitude" class="form-control" name="lng" ></input>
+                        <input id="located-latitude" class="form-control" value="40.4333665" name="lat" hidden></input>
+                        <input id="located-longitude" class="form-control" value="-3.704265999999999" name="lng"
+                            hidden></input>
                     </div>
 
                     <div class="col-md-7">
@@ -109,10 +71,7 @@
 
                 </div>
 
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-block"
-                >Submit</button>
+                <button type="submit" class="btn btn-dark btn-block">Submit</button>
             </form>
         </div>
     </div>
@@ -122,6 +81,4 @@
 <script src="../../js/maps/mapStyles.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../../js/maps/searchAddress.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXr7ulrn0s_L3XB6wxBClITp6RNzz3bbc&callback=initMap"
-></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap"></script>

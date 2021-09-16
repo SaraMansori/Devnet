@@ -83,7 +83,11 @@ router.post('/iniciar-sesion', (req, res) => {
             }
 
             req.session.currentUser = user
+<<<<<<< HEAD
             res.redirect(`/profile/${user.id}`)
+=======
+            res.redirect('/user/profile')
+>>>>>>> 7552f9c55118a7dc5dd2366fcfde432a3cb91a1c
         })
         .catch(err => console.log(err))
 

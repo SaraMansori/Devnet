@@ -15,6 +15,10 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  receiver: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   date: {
     type: Date,
   },
