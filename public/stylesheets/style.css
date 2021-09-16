@@ -236,7 +236,8 @@ label {
 .new-event-container,
 .edit-event-container,
 .community-container,
-.event-details-container {
+.event-details-container, 
+.community-container {
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
@@ -290,6 +291,14 @@ label {
     border-radius: 50%;
 }
 
+.community-container img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 .orange-container h1 {
     font-weight: 600;
     font-size: 4rem;
@@ -331,29 +340,6 @@ label {
     padding: 40px;
 }
 
-@media (max-width: 1200px) {
-    .landing-title h2 {
-        margin-left: 0;
-    }
-
-    .landing-buttons .btn-muted {
-        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-    }
-
-    .landing-buttons .btn {
-        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .card {
-        padding-bottom: 1rem;
-    }
-
-    .cards-block {
-        padding: 2rem;
-    }
-}
 .centerPolicy {
   text-align:justify;
   font-style: italic;
@@ -388,4 +374,62 @@ label {
 .card1{
     padding-top: 300px;
     
+}
+.community-card-buttons{
+    width: 100%;
+}
+
+.community-avatar{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-avatar{
+    margin: 20px;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 3%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.following-username{
+    font-size: 0.8em;
+    text-align: center;
+}
+
+
+@media (max-width: 1200px) {
+    .landing-title h2 {
+        margin-left: 0;
+    }
+
+    .landing-buttons .btn-muted {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    .landing-buttons .btn {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        padding-bottom: 1rem;
+    }
+
+    .cards-block {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .community-container img {
+        width: 8rem;
+        height: 8rem;
+    }
+
 }

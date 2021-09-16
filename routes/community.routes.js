@@ -12,6 +12,9 @@ router.get("/", (req, res) => {
     
     let logged = loggedIn(req)
 
+    let logged = loggedIn(req)
+    console.log(logged)
+
     User
         .find({_id: {$ne: req.session.currentUser?._id}})
         .lean()
@@ -40,23 +43,23 @@ router.get("/details", isLoggedIn, (req, res) => {
             userFollowers = currentUser.followers.map((user) => user._id)
 
             user.isFollower = checkFollower(userFollowers, req.session.currentUser._id)
-            return Event.find({owner: id})
+            return Event.find({ owner: id })
         })
         .then((events) => {
             events.forEach((event) => createdEvents.push(event))
-            return Event.find({participants:id}) 
+            return Event.find({ participants: id })
         })
         .then((events) => {
             events.forEach((event) => participatingEvents.push(event))
-            return Comment.find({receiver:id}).populate("owner").lean()
+            return Comment.find({ receiver: id }).populate("owner").lean()
         })
-        .then((comments)=> {
+        .then((comments) => {
             comments.forEach((comment) => {
                 comment.formattedDate = formatDate(comment.date)
-                comment.time = formatTime(comment.date) 
+                comment.time = formatTime(comment.date)
                 userComments.push(comment)
             })
-            res.render("community/details", {user, createdEvents, participatingEvents, userComments})
+            res.render("community/details", { user, createdEvents, participatingEvents, userComments })
         })
         .catch(err => console.log(err))
 

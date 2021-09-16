@@ -17,16 +17,17 @@
                     <h5 class="textTwo">{{formattedDate}}</h5>
                     <hr>
 
-                    {{#if isBookmark}}
-                    <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from favorites </a>
-                    {{else}}
-                    <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites </a>
-                    {{/if}}
+                {{#if isBookmark}}
+                <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from favorites
+                </a>
+                {{else}}
+                <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites </a>
+                {{/if}}
 
-                </div>
             </div>
+        </div>
         {{/each}}
 
     </div>
-    
+
 </div>

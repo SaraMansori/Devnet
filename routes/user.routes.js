@@ -36,7 +36,6 @@ router.get('/profile', isLoggedIn, (req, res) => {
             return User.findById(id).populate("followers").populate("following").populate("articles")
         })
         .then((user) => {
-            console.log(createdEvents)
             res.render('user/profile', { user, createdEvents, participatingEvents, userComments })
         })
 
