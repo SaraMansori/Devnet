@@ -21,10 +21,10 @@ router.get('/', (req, res, next) => {
           const author = response.byline.original
           const date = response.pub_date
 
-          return Article.create({image, title, headline, date, author})
-          
+          return Article.findOneAndUpdate({title}, 
+            {image, title, headline, date, author} ,
+            {upsert: true, new: true, setDefaultsOnInsert: true})
           })
-          
         return Promise.all(promisesArray)
         })
       .then(allArticles => {

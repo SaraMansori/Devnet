@@ -5,6 +5,7 @@ const CDNupload = require("../config/upload.config");
 const Event = require("../models/Event.model");
 const User = require("../models/User.model");
 const { formatDate, formatTime, checkOwner, checkParticipant } = require("../utils");
+const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 
 router.get("/auth", (req, res) => {
     res.redirect(
