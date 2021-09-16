@@ -233,7 +233,9 @@ label {
     margin-bottom: 4rem;
 }
 
-.new-event-container {
+.new-event-container,
+.edit-event-container,
+.community-container {
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
@@ -242,15 +244,13 @@ label {
 }
 
 .community-container {
-    color: white;
-    margin-top: 80px;
-    background-color: #ff8159;
-    border-radius: 15px;
-    padding: 2rem;
+    padding: 0 6rem 0 6rem;
 }
 
 .community-container img {
-    width: 8rem;
+    width: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .orange-container h1 {
@@ -282,6 +282,7 @@ label {
     color: white;
     margin: 10px 0;
     padding: 10px;
+    font-weight: bolder;
     text-align: center;
 }
 

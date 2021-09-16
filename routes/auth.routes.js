@@ -1,6 +1,8 @@
 const router = require("express").Router()
 const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
+const CDNupload = require("../config/upload.config");
+
 
 
 // Signup
@@ -46,7 +48,7 @@ router.get("/signup/info/:id", (req, res) => {
 
 })
 
-router.post('/signup/info/:id',(req, res,) => {
+router.post('/signup/info/:id', CDNupload.single("image"), (req, res,) => {
 
     const {id} = req.params
     const { email, description, profession } = req.body
@@ -56,7 +58,7 @@ router.post('/signup/info/:id',(req, res,) => {
         .then((user) => {
             req.session.currentUser = user
             req.app.locals.userLogged = true
-            return User.findByIdAndUpdate(id, {email, description, profession}, { new: true })
+            return User.findByIdAndUpdate(id, {email, description, profession, image: req.file?.path}, { new: true })
         })
         .then(()=> res.redirect(`/user/profile`)) 
         .catch(err => console.log(err))

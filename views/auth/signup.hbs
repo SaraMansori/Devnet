@@ -18,18 +18,25 @@
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">
+                            <small>
                             I want to receive news and personalized commercial communications from devnet through
                             email and other means.</label>
+                            </small>
                     </div>
                     <hr>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">
+                            <small>
                             I have been able to read and understand the information on the use of my personal data
-                            explained in the Privacy Policy.</label>
+                            explained in the <a href="#">Privacy Policy</a>.
+                            </small>
+                        </label>
                     </div>
                 </div>
-                <button href="/form" type="submit" class="btn btn-dark btn-white">Sign up</button>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+                </div>
             </form>
 
             {{#if errorMsg}}
@@ -37,7 +44,9 @@
             {{/if}}
 
             <hr>
-            <p>Already have an account? -<a href="/login"> Login</a></p>
+            <div class="d-flex justify-content-center">
+                <p>Already have an account? -<a href="/login"> Login</a></p>
+            </div>
         </div>
     </div>
 </div>
