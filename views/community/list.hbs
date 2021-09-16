@@ -1,34 +1,41 @@
-<div class="container orange-container">
-
-    <h1 style="color: white">Community</h1>
+<div class="container community-container" >
 
     <div class="row">
 
-        {{#each users}}
-
-        <div class="col-3">
-            <div class="card">
-                <img class="card-img-top" src="{{image}}" alt="{{name}} profile image" />
-                <div class="card-body">
-                    <h5 class="card-title">{{username}}</h5>
-                    <p class="card-text">{{role}}</p>
-
-                    <a href="/community/details?id={{_id}}" class="btn btn-dark btn-sm"> Check details </a>
-
-                    {{#if logged}}
-
-                        {{#if isFollower}}
-                        <a href="/user/unfollow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Unfollow </a>
-                        {{else}}
-                        <a href="/user/follow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Follow </a>
-                        {{/if}}
-
-                    {{/if}}
-
+        <div class="col-12">
+        
+            <h1 class="mb-5 mt-5 text-center">community</h1>
+            <div class="row">
+        
+                {{#each users}}
+        
+                <div class="col-2">
+                    <div class="card d-flex align-items-center">
+                        <img class="card-img-top" src="{{image}}" alt="{{name}} profile image" />
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h5 class="card-title">{{username}}</h5>
+                            <p class="card-text">{{role}}</p>
+        
+                            <a href="/community/details?id={{_id}}" class="btn btn-dark btn-sm"> Check details </a>
+        
+                            {{#if logged}}
+        
+                            {{#if isFollower}}
+                            <a href="/user/unfollow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Unfollow </a>
+                            {{else}}
+                            <a href="/user/follow?id={{_id}}&view=list" class="btn btn-primary btn-sm"> Follow </a>
+                            {{/if}}
+        
+                            {{/if}}
+        
+                        </div>
+                    </div>
                 </div>
+                {{/each}}
+        
             </div>
+        
         </div>
-        {{/each}}
 
     </div>
 
