@@ -35,7 +35,7 @@ function geocodeAddress(geocoder, resultsMap) {
 
     geocoder.geocode({ address: address }, function (results, status) {
 
-        
+        console.log(results)
 
         document.querySelector("#located-address").value =
             results[0].formatted_address;
@@ -50,6 +50,12 @@ function geocodeAddress(geocoder, resultsMap) {
 
         document.querySelector("#located-longitude").value =
             results[0].geometry.location.lng();
+
+        document.querySelector("#located-city").value =
+            results[0].address_components[1].long_name;  
+
+        document.querySelector("#located-country").value =
+             results[0].address_components[4].long_name ? results[0].address_components[4].long_name : results[0].address_components[3].long_name ; 
 
         if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);

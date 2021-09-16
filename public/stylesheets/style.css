@@ -23,9 +23,20 @@ body::-webkit-scrollbar {
     font-weight: 300;
 }
 
+.dropdown-item {
+    background-color: rgb(33, 37, 41);
+    color: white
+}
+
+.dropdown-menu {
+    background-color: rgb(33, 37, 41);
+    color: white
+}
+
 .dropdown-item:focus,
 .dropdown-item:hover {
     background-color: #ff8159;
+    color: white;
 }
 
 .navbar {
@@ -127,10 +138,37 @@ body::-webkit-scrollbar {
     margin-top: -40px;
 }
 
+.card-container{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    height: 100%;
+}
+
+
+.filters{
+    padding: 2rem 2rem 0 2rem;
+    background-color: #596aff ;
+    border-radius: 0 12px 12px 0;
+    height: inherit;
+    min-height: 90vh;
+}
+
+.new-event-container {
+    padding: 2rem;
+}
+
 .cards-block {
     background-color: #596aff;
+    margin-bottom: 2rem;
     width: 100vw;
     padding: 5rem;
+}
+
+.cards-row {
+    margin-left: 3rem;
 }
 
 .landing-card,
@@ -155,16 +193,68 @@ body::-webkit-scrollbar {
     color: #596aff;
 }
 
-.container {
-    padding: 3rem 6rem 3rem 6rem;
+.orange {
+    color: #ff8159;
 }
 
-.orange-container,
-.new-event {
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.new-event-form {
+    width: 85%;
+    margin-bottom: 3rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin-bottom: 0
+}
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+label {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.orange-container{
     color: white;
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
+    padding: 0rem 0rem 0rem 2rem;
+    min-height: 90vh;
+    margin-bottom: 4rem;
+}
+
+.new-event-container,
+.edit-event-container,
+.community-container {
+    margin-top: 80px;
+    background-color: #ff8159;
+    border-radius: 15px;
+    min-height: 90vh;
+    margin-bottom: 4rem;
+}
+
+.community-container img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.orange-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+    color: white;
 }
 
 .new-event > * > * {
@@ -190,6 +280,7 @@ body::-webkit-scrollbar {
     color: white;
     margin: 10px 0;
     padding: 10px;
+    font-weight: bolder;
     text-align: center;
 }
 
@@ -201,29 +292,6 @@ body::-webkit-scrollbar {
     padding: 40px;
 }
 
-@media (max-width: 1200px) {
-    .landing-title h2 {
-        margin-left: 0;
-    }
-
-    .landing-buttons .btn-muted {
-        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-    }
-
-    .landing-buttons .btn {
-        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .card {
-        padding-bottom: 1rem;
-    }
-
-    .cards-block {
-        padding: 2rem;
-    }
-}
 .centerPolicy {
   text-align:justify;
   font-style: italic;
@@ -254,4 +322,66 @@ body::-webkit-scrollbar {
 }
 .textThree{
     font-size: 15px;
+}
+.card1{
+    padding-top: 300px;
+    
+}
+.community-card-buttons{
+    width: 100%;
+}
+
+.community-avatar{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-avatar{
+    margin: 20px;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 3%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.following-username{
+    font-size: 0.8em;
+    text-align: center;
+}
+
+
+@media (max-width: 1200px) {
+    .landing-title h2 {
+        margin-left: 0;
+    }
+
+    .landing-buttons .btn-muted {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    .landing-buttons .btn {
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        padding-bottom: 1rem;
+    }
+
+    .cards-block {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .community-container img {
+        width: 8rem;
+        height: 8rem;
+    }
+
 }

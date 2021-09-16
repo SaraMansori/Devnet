@@ -12,7 +12,7 @@
 
                 <hr>
 
-                <p class="textThree">Profession : {{user.description}}</p>
+                <p class="textThree">Profession : {{user.profession}}</p>
 
                 <hr>
 
@@ -44,9 +44,10 @@
             <hr>
             <h2>Bookmarked News</h2>
                 {{#each user.articles}}
-                    {{title}}
                     <hr>
+                    {{title}}
                 {{/each}}
+                <hr>
             <h2>Comments</h2>
                 {{#each userComments}}
                 

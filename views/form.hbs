@@ -1,31 +1,52 @@
-<form action="#" method="POST" class="row g-3 pad">
+<div class="container">
 
-    <h3>Fill in the fields</h3>
 
-    <div class="col-md-4">
-        <label for="email" class="form-label">Email</label>
-        <input type="text" class="form-control" id="email" name="email" required>
-    </div>
+    <form action="/signup/info/{{id}}" method="POST" class="row g-3 pad" enctype="multipart/form-data">
 
-    <div class="col-md-3">
-        <label for="profession" class="form-label">Profession</label>
-        <select id="profession" name="profession" class="form-select">
-            <option>WEB DEVELOPER</option>
-            <option>DATA ANALYTICS</option>
-            <option>DESIGN UX/UI</option>
-            <option>CIBERSECURITY</option>
-            <option>DEVOPS</option>
-            <option>MOBILE DEVELOPER</option>
-            <option>DESKTOP DEVELOPER</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" name="description" required>
-    </div>
+        <h1>Complete your signup</h1>
+        <br>
 
-    <div class="col-12">
-        <button class="btn btn-primary" type="submit">Enviar</button>
-    </div>
+        <h5>Fill in the fields</h5>
 
-</form>
+        <hr>
+
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+
+            <div class="col-md-4">
+                <label for="profession" class="form-label">Profession</label>
+                <select id="profession" name="profession" class="form-select">
+                    <option>WEB DEVELOPER</option>
+                    <option>DATA ANALYTICS</option>
+                    <option>DESIGN UX/UI</option>
+                    <option>CIBERSECURITY</option>
+                    <option>DEVOPS</option>
+                    <option>MOBILE DEVELOPER</option>
+                    <option>DESKTOP DEVELOPER</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="profile-image" class="form-label">Profile Image</label>
+                <input type="file" class="form-control" id="profile-image" name="image">
+            </div>
+
+            <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+
+            <div class="col-12 mt-5">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button>
+            </div>
+
+        </div>
+
+
+    </form>
+
+</div>
