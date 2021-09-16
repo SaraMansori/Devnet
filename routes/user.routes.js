@@ -3,14 +3,17 @@ const { isLoggedIn } = require('./../middleware')
 const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 const Comment = require("../models/Comment.model")
+const {formatDate, formatTime} = require("../utils");
+
 
 
 router.get('/profile', isLoggedIn, (req, res) => {
 
     const id = req.session.currentUser._id
 
-    let createdEvents = []
-    let participatingEvents = []
+    const createdEvents = []
+    const participatingEvents = []
+    const userComments = []
 
     Event
         .find({owner: id})
@@ -22,11 +25,19 @@ router.get('/profile', isLoggedIn, (req, res) => {
         })
         .then((events) => {
             events.forEach((event) => participatingEvents.push(event))
-            return User.findById(id)
+            return Comment.find({receiver:id}).populate("owner").lean()
+        })
+        .then((comments) => {
+            comments.forEach((comment) => {
+                comment.formattedDate = formatDate(comment.date)
+                comment.time = formatTime(comment.date) 
+                userComments.push(comment)
+            })
+            return User.findById(id).populate("followers").populate("following").populate("articles")
         })
         .then((user) => {
-            console.log("useeeeeeeeeeeer", user, "followeers", user.followers, "followiiing", user.following)
-            res.render('user/profile', { user, createdEvents, participatingEvents })
+            console.log(user)
+            res.render('user/profile', { user, createdEvents, participatingEvents, userComments })
         })
 
 })
@@ -40,11 +51,16 @@ router.get("/follow", (req, res) => {
         .findByIdAndUpdate(id, {$push: {followers: currentUser}})
         .populate("followers")
         .then(() => {
+            return User.findByIdAndUpdate(currentUser, {$push: {following: id}})
+        })
+        .then(() => {
+
             if (view === "list") {
                 res.redirect(`/community`)
-            } else if(view === "details") {
+            } else if (view === "details") {
                 res.redirect(`/community/details?id=${id}`)
             }
+
         })
         .catch((err)=>console.log(err))
 })
@@ -57,10 +73,13 @@ router.get("/unfollow", (req, res) => {
     User
         .findByIdAndUpdate(id, {$pull: {followers: currentUser}})
         .populate("following")
-        .then((user) => {
-             if (view === "list") {
+        .then(() => {
+            return User.findByIdAndUpdate(currentUser, {$pull: {following: id}})
+        })
+        .then(() => {
+            if (view === "list") {
                 res.redirect(`/community`)
-            } else if(view === "details") {
+            } else if (view === "details") {
                 res.redirect(`/community/details?id=${id}`)
             }
         })
@@ -77,8 +96,7 @@ router.post("/comment", (req, res) => {
     Comment
         .create({text, owner, receiver: id, date: Date.now()})
         .then((comment) => {
-            console.log("----------------", comment)
-            res.redirect(`/community/details?id=${id})`)
+            res.redirect(`/community/details?id=${id}`)
     })
     
 })

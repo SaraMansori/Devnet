@@ -1,24 +1,28 @@
 <div class="container ">
 
     <div class="row">
-        <h2 class="text">Technology sector news</h2>
+        <h2 class="text">Tech news</h2>
         {{#each allArticles}}
             <div class="col-md-4 space">
                 <div class="card color" style="width: 15rem;">
-                        <img src="{{image}}" alt="">
+                    <img src="{{image}}" alt="">
                     <br>
-                    {{title}}
+                    <a href="{{url}}">{{title}}</a>
                     <hr>
                     <div class="">
                         <p class="textThree">{{headline}}</p>
                     </div>
                     <hr>
                     <h5 class="textTwo">{{author}}</h5>
-                    <h5 class="textTwo">{{date}}</h5>
+                    <h5 class="textTwo">{{formattedDate}}</h5>
                     <hr>
-                    {{#if multimedia}} 
-                    <img src="https://static01.nyt.com/{{multimedia.1.url}}" class="card-img-top" alt="image">
-                   {{/if}}
+
+                    {{#if isBookmark}}
+                    <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from favorites </a>
+                    {{else}}
+                    <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites </a>
+                    {{/if}}
+
                 </div>
             </div>
         {{/each}}
