@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const {checkFollower, formatDate, formatTime} = require("../utils");
 const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", (req, res) => {
 
     User
         .find() //REVISAR
