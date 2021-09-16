@@ -9,11 +9,16 @@
                                 <div class="card-container col-4">
                                     <div class="card">
                                         <img class="card-img-top" src="{{image}}" alt="{{name}} event image" />
-                                        <div class="card-body d-flex flex-column justify-content-around">
-                                            <h5 class="card-title">{{name}}</h5>
-                                            <small class="card-text">{{address}}</small>
+
+                                        <div class="card-body d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">{{name}}</h5>
+                                                <small class="card-text">{{country}}, {{city}}</small>
+                                            </div>
+                                            <br>
                                             <a href="/events/details?id={{id}}" class="btn btn-primary">Check details</a>
                                         </div>
+
                                     </div>
                                 </div>
                         {{/each}}
@@ -24,7 +29,6 @@
                         <input type="text" class="form-control">
                          <div class="input-group-append">
                             <button class="btn btn-dark" type="button">Search</button>
-
                         </div>
                     </div>
                     <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in cupiditate magnam asperiores soluta? </p> 

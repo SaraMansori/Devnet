@@ -23,9 +23,20 @@ body::-webkit-scrollbar {
     font-weight: 300;
 }
 
+.dropdown-item {
+    background-color: rgb(33, 37, 41);
+    color: white
+}
+
+.dropdown-menu {
+    background-color: rgb(33, 37, 41);
+    color: white
+}
+
 .dropdown-item:focus,
 .dropdown-item:hover {
     background-color: #ff8159;
+    color: white;
 }
 
 .navbar {
@@ -142,6 +153,11 @@ body::-webkit-scrollbar {
     background-color: #596aff ;
     border-radius: 0 12px 12px 0;
     height: inherit;
+    min-height: 90vh;
+}
+
+.new-event-container {
+    padding: 2rem;
 }
 
 .cards-block {
@@ -177,19 +193,52 @@ body::-webkit-scrollbar {
     color: #596aff;
 }
 
+.orange {
+    color: #ff8159;
+}
+
 a {
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
 
-.orange-container,
-.new-event {
+.new-event-form {
+    width: 85%;
+    margin-bottom: 3rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin-bottom: 0
+}
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+label {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.orange-container{
     color: white;
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
-    padding: 0rem 0rem 0rem 2rem
+    padding: 0rem 0rem 0rem 2rem;
+    min-height: 90vh;
+    margin-bottom: 4rem;
+}
+
+.new-event-container {
+    margin-top: 80px;
+    background-color: #ff8159;
+    border-radius: 15px;
+    min-height: 90vh;
+    margin-bottom: 4rem;
 }
 
 .community-container {

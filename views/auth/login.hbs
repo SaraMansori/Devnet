@@ -4,32 +4,36 @@
 
         <div class="col-md-4">
 
-            <h3 class="loginCenter">LOG IN INTO YOUR ACCOUNT devnet</h3>
+            <h3 class="loginCenter">LOG IN INTO YOUR <br> <span class="orange">devnet</span> ACCOUNT</h3>
             <br>
             <hr>
 
 
             <form action="/login" method="POST" class="spaceOne">
                 <div class="form-group">
-                    <label for="username"></label>
+                    <label for="username">Username:</label>
                     <input placeholder="Username" type="text" class="form-control" id="username" name="username">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="password"></label>
+                    <label for="password">Password:</label>
                     <input placeholder="Password" type="password" class="form-control" id="password" name="userPwd">
                 </div>
                 <br>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="submit" class="btn btn-dark" type="button">Access</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" type="button">Access</button>
                 </div>
+                <br>
             </form>
 
             {{#if errorMsg}}
-            <p id="errorMessage">{{errorMsg}}</p>
+                <p id="errorMessage">{{errorMsg}}</p>
             {{/if}}
+
             <hr>
-            <p>¿Not a member? -<a href="/signup"> Join us</a></p>
+            <div class="d-flex justify-content-center">
+                <p>¿Not a member? - <a href="/signup"> Join now </a></p>
+            </div>
         </div>
     </div>
 </div>

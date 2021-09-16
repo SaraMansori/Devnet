@@ -61,7 +61,7 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.post("/new", CDNupload.single("image"), (req, res) => {
 
     const owner = req.session.currentUser._id
-    const { name, description, date, address, lat, lng, time } = req.body;
+    const { name, description, date, address, lat, lng, time, country, city } = req.body;
 
     const location = {
         type: "Point",
@@ -77,6 +77,8 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
         address,
         location,
         owner,
+        country,
+        city,
         image: req.file?.path,
     })
         .then(() => {
