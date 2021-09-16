@@ -34,25 +34,30 @@
             <hr>
             <h2>Followers</h2>
                 {{#each user.followers}}
-                {{name}}
+                {{username}}
                 {{/each}}
             <hr>
             <h2>Following</h2>
                 {{#each user.following}}
-                {{name}}
+                {{username}}
                 {{/each}}
             <hr>
             <h2>Bookmarked News</h2>
-            <hr>
+                {{#each user.articles}}
+                    {{title}}
+                    <hr>
+                {{/each}}
             <h2>Comments</h2>
-            <div class="form-group">
-                <form action="/user/comment" method="post">
-                    <label for="exampleFormControlTextarea1">New comment</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
-                    <input type="text" value="{{user._id}}" name="id">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </form>
-            </div>
+                {{#each userComments}}
+                
+                <small>Comment by: {{owner.username}}</small>
+                <br>
+                <small>{{formattedDate}} at {{time}}</small>
+                <br>
+                {{text}}
+                <hr>
+                
+                {{/each}}
         </div>
         
     </div>

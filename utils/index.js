@@ -34,8 +34,12 @@ module.exports = {
     
     checkFollower: (userFollowers, currUserId) => userFollowers.some(id => id.equals(currUserId)),
 
+    checkBookmark: (userArticles, articleId) => userArticles.some(id => id === articleId),
+
     checkOwner: (eventOwnerId, currUserId) => eventOwnerId === currUserId,
 
-    checkParticipant: (eventParticipantsArr, currUserId) => eventParticipantsArr.some(id => id.equals(currUserId))
+    checkParticipant: (eventParticipantsArr, currUserId) => eventParticipantsArr.some(id => id.equals(currUserId)),
+
+    isLoggedIn: (req) =>  req.session.currentUser ? true: false,
     
 };

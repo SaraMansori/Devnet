@@ -11,7 +11,7 @@ const { checkId, isLoggedIn, checkRoles } = require("../middleware")
 router.get("/", (req, res) => {
 
     User
-        .find() //REVISAR
+        .find({_id: {$ne: req.session.currentUser._id}}) //REVISAR
         .lean()
         .then((users) => {
             users.forEach((user) => {
@@ -50,9 +50,9 @@ router.get("/details", isLoggedIn, (req, res) => {
         })
         .then((comments)=> {
             comments.forEach((comment) => {
-                userComments.push(comment)
                 comment.formattedDate = formatDate(comment.date)
                 comment.time = formatTime(comment.date) 
+                userComments.push(comment)
             })
             res.render("community/details", {user, createdEvents, participatingEvents, userComments})
         })
