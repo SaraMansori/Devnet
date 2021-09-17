@@ -401,6 +401,10 @@ label {
     text-align: center;
 }
 
+.signup-container, .login-container {
+    min-height: 92.5vh;
+}
+
 
 @media (max-width: 1200px) {
     .landing-title h2 {
