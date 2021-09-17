@@ -241,6 +241,21 @@ label {
     margin-bottom: 4rem;
 }
 
+.new-event-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.community-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.edit-event-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
 .event-details-container {
     padding: 3rem;
 }
