@@ -17,12 +17,14 @@
                         <small class="text-muted">
                             <h5 class="textTwo">{{author}}</h5>
                             <h5 class="textTwo">{{formattedDate}}</h5>
+                            <br>
                             {{#if isBookmark}}
-                            <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from
+                        
+                            <a href="/news/remove-bookmark?id={{id}}" class="btn-dark btn " type="button"> Remove from
                                 favorites
                             </a>
                             {{else}}
-                            <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites
+                            <a href="/news/bookmark?id={{id}}" class="btn-dark btn " type="button"> Save to Favorites
                             </a>
                             {{/if}}
                         </small>
