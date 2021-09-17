@@ -111,8 +111,9 @@ router.post('/login', (req, res) => {
             }
 
             req.session.currentUser = user
+            req.app.locals.userObj = user
             req.app.locals.userLogged = true
-            res.redirect('/user/profile')
+            res.redirect(`/user/profile/${user._id}`)
         })
         .catch(err => console.log(err))
 
@@ -120,6 +121,7 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
+    delete req.app.locals.userObj
     req.app.locals.userLogged = false
 })
 router.get('/profile/:id', (req, res, next ) =>{

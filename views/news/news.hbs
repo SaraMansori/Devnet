@@ -1,8 +1,5 @@
-
 <div class="container ">
-
     <div class="row">
-        <br>
         <h2 class="text">Tech news</h2>
         {{#each allArticles}}
         <div class="col-md-4 card-container space">
@@ -19,7 +16,6 @@
                             <h5 class="textTwo">{{formattedDate}}</h5>
                             <br>
                             {{#if isBookmark}}
-                        
                             <a href="/news/remove-bookmark?id={{id}}" class="btn-dark btn " type="button"> Remove from
                                 favorites
                             </a>
@@ -29,13 +25,9 @@
                             {{/if}}
                         </small>
                     </div>
-        </div>
+                </div>
             </div>
         </div>
         {{/each}}
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 </div>
