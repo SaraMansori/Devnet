@@ -1,32 +1,35 @@
+
 <div class="container ">
 
     <div class="row">
+        <br>
         <h2 class="text">Tech news</h2>
         {{#each allArticles}}
-            <div class="col-md-4 card-container space">
-                <div class="card color" style="width: 15rem;">
-                    <img src="{{image}}" alt="">
-                    <br>
-                    <a href="{{url}}">{{title}}</a>
-                    <hr>
-                    <div class="">
-                        <p class="textThree">{{headline}}</p>
+        <div class="col-md-4 card-container space">
+            <div class="card-group color" style="width: 24rem;">
+                <div class="card color">
+                    <img class="card-img-top" src="{{image}}" alt="iamge">
+                    <div class="card-body">
+                        <h5 class="card-title "><a href="{{url}}">{{title}}</a></h5>
+                        <p class="card-text">{{headline}}</p>
                     </div>
-                    <hr>
-                    <h5 class="textTwo">{{author}}</h5>
-                    <h5 class="textTwo">{{formattedDate}}</h5>
-                    <hr>
-
-                    {{#if isBookmark}}
-                    <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from favorites </a>
-                    {{else}}
-                    <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites </a>
-                    {{/if}}
-
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <h5 class="textTwo">{{author}}</h5>
+                            <h5 class="textTwo">{{formattedDate}}</h5>
+                            {{#if isBookmark}}
+                            <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn" type="button"> Remove from
+                                favorites
+                            </a>
+                            {{else}}
+                            <a href="/news/bookmark?id={{id}}" class="btn-primary btn" type="button"> Save to Favorites
+                            </a>
+                            {{/if}}
+                        </small>
+                    </div>
                 </div>
             </div>
+        </div>
         {{/each}}
-
     </div>
-    
 </div>

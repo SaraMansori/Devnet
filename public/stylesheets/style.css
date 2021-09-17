@@ -285,8 +285,12 @@ a {
     padding-top: 50px;
 }
 .color{
-    background-color: rgb(33, 37, 41);
+    /* background-color: rgb(33, 37, 41); */
+    background-color: rgb(0,0,0);
     color: white;
+    padding: 2px;
+    border-radius: 3px;
+    border
 }
 .text{
     text-align: center;
@@ -300,5 +304,4 @@ a {
 }
 .card1{
     padding-top: 300px;
-    
 }

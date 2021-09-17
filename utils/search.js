@@ -1,12 +1,12 @@
 const printInfo = info => {
     const { name, country, city } = info[0]
-    const text = `Lo que queramos poner ${name}`
-
+    const text = `Lo que queramos poner ${name}${country}${city}`
+    console.log(info)
     document.querySelector('#result').innerHTML = text
 }
 
 const printError = name => {
-    document.querySelector('#result').innerHTML = `<span style="color: red">El país ${name} no existe...</span>`
+    document.querySelector('#result').innerHTML = `El evento ${name} no existe`
 }
 
 const getCountryInfo = name => {
