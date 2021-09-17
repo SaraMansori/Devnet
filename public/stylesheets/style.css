@@ -167,10 +167,6 @@ body::-webkit-scrollbar {
     padding: 5rem;
 }
 
-.cards-row {
-    margin-left: 3rem;
-}
-
 .landing-card,
 .card {
     color: rgb(33, 37, 41);
@@ -257,10 +253,16 @@ label {
 }
 
 .mini-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     object-fit: cover;
+}
+
+.event-details-container p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
 }
 
 .profile-container {
