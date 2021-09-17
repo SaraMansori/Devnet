@@ -14,43 +14,16 @@ router.get("/auth", (req, res) => {
 });
 
 router.get("/list", (req, res, next) => {
-    //WIP
 
-    const eventBrite = () => {
-        //let settings = {
-        //    "url": "https://www.eventbriteapi.com/v3/categories/102/",
-        //    "method": "GET",
-        //    "timeout": 0,
-        //    "headers": {
-        //      "Authorization": "Bearer JFAMGGIPHW2GU7AG7HPY"
-        //    },
-        //  };
-
-        axios
-            .get("https://www.eventbriteapi.com/v3/categories/102/", {
-                headers: {
-                    Authorization: "Bearer JFAMGGIPHW2GU7AG7HPY",
-                },
+    Event
+        .find()
+        .lean()
+        .then((events) => {
+            events.forEach((event) =>{ 
+                event.time = formatTime(event.date)
+                event.date = formatDate(event.date)
             })
-            .then((response) => {
-                console.log(response);
-                res.render("events/list");
-            });
-
-        //const {code} = req.query
-        //const code = "JFAMGGIPHW2GU7AG7HPY"
-        //axios.get( `https://www.eventbriteapi.com/v3/categories/102?token=${code}`)
-
-        //.then(response => {
-        //    res.send(response)
-        //})
-        //.catch(err => console.log(err))
-
-        //res.render("events/list");
-    };
-
-    Event.find().then((events) => {
-        res.render("events/list", { events });
+            res.render("events/list", { events });
     });
 });
 
@@ -61,7 +34,7 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.post("/new", CDNupload.single("image"), (req, res) => {
 
     const owner = req.session.currentUser._id
-    const { name, description, date, address, lat, lng, time } = req.body;
+    const { name, description, date, address, lat, lng, time, country, city } = req.body;
 
     const location = {
         type: "Point",
@@ -77,6 +50,8 @@ router.post("/new", CDNupload.single("image"), (req, res) => {
         address,
         location,
         owner,
+        country,
+        city,
         image: req.file?.path,
     })
         .then(() => {

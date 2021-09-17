@@ -1,14 +1,12 @@
-<div class="row justify-content-center">
 
-    <div class="col-8">
+    <div class="container new-event-container">
 
-        <div class="container new-event">
+        <div class="row justify-content-center">    
+        <h1 class="text-center mb-5 mt-5">Create new event</h1>
 
-            <h1 style="color: white">Create new event</h1>
+        <form method="POST" action="/events/new" enctype="multipart/form-data" class="new-event-form">
 
-            <form method="POST" action="/events/new" enctype="multipart/form-data">
-
-                <div class="row">
+            <div class="row">
 
                     <div class="col-12">
 
@@ -22,57 +20,74 @@
                             <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                         </div>
 
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <input type="date" class="form-control" id="date" name="date" />
+                        <div class="row below-container">
+
+                            <div class="col-6 left">
+                                <div class="row">
+                                    <div class="col-6 date">
+                                        <div class="form-group">
+                                            <label for="date">Date</label>
+                                            <input type="date" class="form-control" id="date" name="date" />
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-6 time">
+                                        <div class="form-group">
+                                            <label for="time">Hour</label>
+                                            <input type="time" class="form-control" id="time" name="time" min="00:00" max="23:00" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="event-image">Upload Event Image</label>
+                                            <input type="file" class="form-control" id="event-image" name="image" />
+                                        </div>
+                                        <button type="submit" class="btn btn-lg btn-dark btn-new-event">Submit</button>
+                                    </div>
+
+
+
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="form-group">
-                                    <label for="time">Hour</label>
-                                    <input type="time" class="form-control" id="time" name="time" min="00:00"
-                                        max="23:00" />
+
+                            <div class="col-6 right">
+
+                                <div class="row">
+
+                                    <div class="col-12">
+                                        <label for="address">Address</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="address" name="addressUser" required />
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-primary" id="submit" type="button">Locate</button>
+                                            </div>
+                                        </div>
+
+                                        <input id="located-address" class="form-control" name="address" hidden></input>
+                                        <input id="located-latitude" class="form-control" value="40.4333665" name="lat" hidden></input>
+                                        <input id="located-longitude" class="form-control" value="-3.704265999999999" name="lng" hidden></input>
+                                        <input id="located-city" class="form-control" value="unknown" name="city" hidden></input>
+                                        <input id="located-country" class="form-control" value="unknown" name="country" hidden></input>
+
+                                        <small id="located-address-show"></small>
+                                        <br>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div id="map-canvas"></div>
+                                    </div>
                                 </div>
+
                             </div>
 
                         </div>
 
-                    </div>
-
-                    <div class="form-group col-md-5">
-                        <div class="form-group">
-                            <label for="event-image">Event Image</label>
-                            <input type="file" class="form-control" id="event-image" name="image" />
-                        </div>
-
-                        <br>
-
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="addressUser" required />
-
-                        <small id="located-address-show"></small>
-
-                        <br>
-
-                        <button type="button" class="btn btn-primary d-block" id="submit">Locate</button>
-
-                        <input id="located-address" class="form-control" name="address" hidden></input>
-                        <input id="located-latitude" class="form-control" value="40.4333665" name="lat" hidden></input>
-                        <input id="located-longitude" class="form-control" value="-3.704265999999999" name="lng"
-                            hidden></input>
-                    </div>
-
-                    <div class="col-md-7">
-                        <div id="map-canvas"></div>
                     </div>
 
                 </div>
 
-                <button type="submit" class="btn btn-dark btn-block">Submit</button>
-            </form>
-        </div>
+        </form>
     </div>
 
 </div>

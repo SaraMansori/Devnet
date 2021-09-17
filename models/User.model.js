@@ -35,23 +35,12 @@ const userSchema = new Schema({
     type: String,
     default: 'https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg'
   },
-  //'joined-events': [{
-  //  type: Schema.Types.ObjectId,
-  //  ref: 'Events'
-  //}],
-  //'created-events': [{
-  //  type: Schema.Types.ObjectId,
-  //  ref: 'Events'
-  //}],
   profession:[{
     type: String,
     default: 'UNKOWN',
     enum:['WEB DEVELOPER', 'DATA ANALYTICS', 'DESIGN UX/UI', 'CIBERSECURITY','DEVOPS', 'MOBILE DEVELOPER','DESKTOP DEVELOPER',]
   }],
-  /* comments: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Comment',
-  }], */
+
   'followers': [{
     type: Schema.Types.ObjectId,
     ref: 'User'

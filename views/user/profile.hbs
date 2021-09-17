@@ -1,63 +1,104 @@
-<div class="container ">
+<div class="container profile-container">
 
-    <div class="row">
-        <div class="col-4">
-                <h2>My profile {{user.name}}</h2>
+    <div class="row justify-content-center">
+        <div class="col-12">
 
-                <img width="50%" src="{{user.image}}" alt="image">
+            <div class="row">
 
-                <br>
+                <div class="col-md-3 col-sm-12 mr-4">
 
-                Name : {{user.username}}
+                    <div class="row d-flex align-content-center info">
+                        <div class="col-12 mb-3 d-flex justify-content-center">
+                            <h2>My profile {{user.name}}</h2>
+                        </div>
 
-                <hr>
 
-                <p class="textThree">Profession : {{user.profession}}</p>
+                        <div class="col-12 mb-4 d-flex justify-content-center">
+                            <img width="50%" src="{{user.image}}" alt="image">
+                        </div>
 
-                <hr>
+                        <div class="col-12 d-flex justify-content-center">
+                            Username : {{user.username}}
+                        </div>
 
-                <h5 class="textTwo">Email : {{user.email}}</h5>
+                        <div class="col-12 d-flex justify-content-center">
+                            <p class="textThree">{{user.profession}}</p>
+                        </div>
 
-                <hr>
-        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            <p>Email : {{user.email}}</p>
+                        </div>
 
-        <div class="col-8">
-            <h2>Events Created</h2>
-                {{#each createdEvents}}
-                    {{name}}
-                {{/each}}
-            <hr>
-            <h2>Events Joined</h2>
-                {{#each participatingEvents}}
-                {{name}}
-                {{/each}}
-            <hr>
-            <h2>Followers</h2>
-                {{#each user.followers}}
-                {{username}}
-                {{/each}}
-            <hr>
-            <h2>Following</h2>
-                {{#each user.following}}
-                {{username}}
-                {{/each}}
-            <hr>
-            <h2>Bookmarked News</h2>
-                {{#each user.articles}}
-                    {{title}}
+                    </div>
+                
+                </div>
+                
+                <div class="col-md-9 col-sm-12">
+
+                    <h2>Events Created</h2>
+                    <div class="card-deck">
+                        <div class="row">
+                            {{#each createdEvents}}
+                                <div class="col-md-3 col-sm-12">
+                                    <a href="/events/details?id={{_id}}">
+                                        <div class="card">
+                                            <img class="card-img-top" src="{{image}}" alt="{{name}} image">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{name}}</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                        
                     <hr>
-                {{/each}}
-            <h2>Comments</h2>
-                {{#each userComments}}
+                    <h2>Events Joined</h2>
+                    {{#each participatingEvents}}
+                        <div class="col-md-3 col-sm-12">
+                            <a href="/events/details?id={{_id}}">
+                                <div class="card">
+                                    <img class="card-img-top" src="{{image}}" alt="{{name}} image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{name}}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                    <hr>
+                    <h2>Followers</h2>
+                    {{#each user.followers}}
+                    {{username}}
+                    {{/each}}
+                    <hr>
+                    <h2>Following</h2>
+                    {{#each user.following}}
+                    {{username}}
+                    {{/each}}
+                    <hr>
+                    <h2>Bookmarked News</h2>
+                    {{#each user.articles}}
+                    <hr>
+                    {{title}}
+                    {{/each}}
+                    <hr>
+                    <h2>Comments</h2>
+                    {{#each userComments}}
                 
-                <small>Comment by: {{owner.username}}</small>
-                <br>
-                <small>{{formattedDate}} at {{time}}</small>
-                <br>
-                {{text}}
-                <hr>
+                    <small>Comment by: {{owner.username}}</small>
+                    <br>
+                    <small>{{formattedDate}} at {{time}}</small>
+                    <br>
+                    {{text}}
+                    <hr>
                 
-                {{/each}}
+                    {{/each}}
+                </div>
+
+            </div>
+
         </div>
         
     </div>

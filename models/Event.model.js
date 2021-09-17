@@ -9,13 +9,12 @@ const eventSchema = new Schema(
             required: true,
             minlength: 1,
             maxlength: 50,
-            //match: /^\S+$/,
             trim: true,
         },
         description: {
             type: String,
-            //match: /^\S+$/,
             maxlength: 300,
+            trim: true
         },
         date: {
             type: Date,

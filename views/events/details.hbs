@@ -1,31 +1,77 @@
-<div class="container orange-container">
+<div class="container event-details-container">
 
     <div class="row justify-content-center">
 
         <div class="col-10">
 
-            <h1>{{event.name}}</h1>
+            <div class="row">
 
-            <hr />
+                <div class="col-12">
+                    <h1 class="text-center mb-5 mt-5">{{event.name}}</h1>
+                </div>
 
-            <img width="80%" src="{{event.image}}" alt="{{event.name}} image " />
+                <div class="col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <img class="event-image" src="{{event.image}}" alt="{{event.name}} image " />
+                        </div>
+                        <div class="col-12">
+                            <h3>Participants</h3>
+                        </div>
+                        <div class="col-12 d-flex flex-column">
+                            {{#each event.participants}}
+                                <a href="/community/details?id={{_id}}">
+                                    <img title="{{name}}" src="{{image}}" class="mini-image" alt="{{name}} image">
+                                </a>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
 
-            <ul>
-                <li> <b>Description: </b> {{event.description}}</li>
-                <li> <b>Date:</b> {{event.date}}</li>
-                <li> <b>Location:</b> <span id="address">{{event.address}}</span></li>
-                <li> <b>Event Creator:</b> {{event.owner.username}} </li>
-                <li> <b>Participants:</b>
-                    {{#each event.participants}}
-                    {{username}}
-                    {{/each}}
-                </li>
+                <div class="col-md-6 col-sm-12">
 
-            </ul>
+                    <div class="row">
 
-            <div class="col-md-7">
-                <div id="map-canvas"></div>
+                        <div class="col-12">
+
+                        <div class="col-12">
+                            <h3>Organized by</h3>
+                        </div>
+
+                        <div class="col-12">
+                            <a href="/community/details?id={{event.owner._id}}">
+                                <img class="mini-image" src="{{event.owner.image}}" title="{{event.owner.name}}" alt="{{event.owner.name}} image">
+                            </a>
+                        </div>
+
+                        <div class="col-12">
+                            <h3>Information</h3>
+                        </div>
+
+                        <div class="col-12">
+                            {{event.description}}
+                        </div>
+
+                        <div class="col-12">
+                            <h3>Where and when?</h3>
+                        </div>
+
+                        <div class="col-12">
+                            {{event.date}}
+                        </div>
+
+                        <div class="col-12">
+                            <h3>Location</h3>
+                            <p id="address">{{event.address}}</p></li>
+                            <div id="map-canvas"></div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
             </div>
+
 
             <p id="error-msg"></p>
 
@@ -60,7 +106,7 @@
         </div>
 
     </div>
-
+    </div>
 </div>
 
 <script src="../../js/maps/mapStyles.js"></script>
