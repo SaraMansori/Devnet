@@ -38,10 +38,13 @@
                             <h3>Organized by</h3>
                         </div>
 
+                        <br>
+
                         <div class="col-12">
                             <a href="/community/details?id={{event.owner._id}}">
-                                <img class="mini-image" src="{{event.owner.image}}" title="{{event.owner.name}}" alt="{{event.owner.name}} image">
-                            </a>
+                                <img class="mini-image" src="{{event.owner.image}}" title="{{event.owner.username}}" alt="{{event.owner.username}} image">
+                             </a> <span></span>
+                            <p>{{event.owner.username}}</p>
                         </div>
 
                         <div class="col-12">
@@ -49,15 +52,17 @@
                         </div>
 
                         <div class="col-12">
-                            {{event.description}}
+                           <p>{{event.description}}</p> 
                         </div>
+
+                        <br>
 
                         <div class="col-12">
                             <h3>Where and when?</h3>
                         </div>
 
                         <div class="col-12">
-                            {{event.date}}
+                            <p>{{event.date}}</p> 
                         </div>
 
                         <div class="col-12">
@@ -91,8 +96,10 @@
 
                 {{/unless}}
 
-                <div class="col-6 d-flex">
-                    <a href="/events/edit?id={{event.id}}" type="button" class="btn btn-dark"> Edit Event </a>
+                <div class="col-6 d-flex" >
+                    <a href="/events/edit?id={{event.id}}" type="button" class="btn btn-dark" style="
+    margin-right: 1rem"> Edit Event </a>
+                    
 
                     <form method="POST" action="/events/delete">
                         <input type="text" value="{{event.id}}" name="id" hidden>
