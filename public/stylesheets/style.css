@@ -294,10 +294,13 @@ label {
 }
 
 
-.profile-container {
+.profile-container,
+.signup-info-container
+ {
     min-height: 90vh;
     margin-top: 10vh;
 }
+
 
 .info img {
     border-radius: 50%;

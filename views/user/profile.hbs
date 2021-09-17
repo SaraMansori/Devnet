@@ -79,11 +79,19 @@
                     {{/each}}
                     <hr>
                     <h2>Bookmarked News</h2>
-                    {{#each user.articles}}
+                    <ul>
+                        <li>
+                            {{#each user.articles}}
+                            <a href="{{url}}">
+                            {{title}}
+                            </a>
+                            <br>
+                            {{/each}}
+                        </li>
+
+                    </ul>
                     <hr>
-                    {{title}}
-                    <hr>
-                    {{/each}}
+
                     <h2>Comments</h2>
 
 

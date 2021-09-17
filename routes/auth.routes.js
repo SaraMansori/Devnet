@@ -54,14 +54,12 @@ router.post('/signup/info/:id', CDNupload.single("image"), (req, res,) => {
     const {id} = req.params
     const { email, description, profession, username } = req.body
 
-    User
+/*     User
     .findByIdAndUpdate(id, {email, description, profession}, { new: true })
     .then(()=> res.redirect(`/user/profile/${id}`)) 
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)) */
 
-
-    
-    transporter
+/*     transporter
     .sendMail({
         from: `Welcome to devnet <devnethubsocial@gmail.com>`,
         to: email,
@@ -72,15 +70,16 @@ router.post('/signup/info/:id', CDNupload.single("image"), (req, res,) => {
         </b>`
     })
     .then(info => res.send(info))
-    .catch(error => console.log(error))
+    .catch(error => console.log(error)) */
     
+        User
         .findById(id)
         .then((user) => {
             req.session.currentUser = user
             req.app.locals.userLogged = true
             return User.findByIdAndUpdate(id, {email, description, profession, image: req.file?.path}, { new: true })
         })
-        .then(()=> res.redirect(`/user/profile`)) 
+        .then(()=> res.redirect(`/user/profile/${id}`)) 
         .catch(err => console.log(err))
 })
 
