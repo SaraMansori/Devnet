@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
 
-            <div class="row">
+            <div class="row mb-5">
 
                 <div class="col-md-3 col-sm-12 mr-4">
 
@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="col-12 d-flex justify-content-center">
-                            Username : {{user.username}}
+                           <b class="mr-2">Username:</b> <span> {{user.username}}</span>
                         </div>
 
                         <div class="col-12 d-flex justify-content-center">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="col-12 d-flex justify-content-center">
-                            <p>Email : {{user.email}}</p>
+                            <p> <b>Email :</b> {{user.email}}</p>
                         </div>
 
                     </div>
@@ -82,19 +82,28 @@
                     {{#each user.articles}}
                     <hr>
                     {{title}}
-                    {{/each}}
                     <hr>
+                    {{/each}}
                     <h2>Comments</h2>
-                    {{#each userComments}}
+
+
+                        {{#each userComments}}
+
+                            <div class="comment">
+
+                                <div class="mb-1">
+                                    <small>Comment by: {{owner.username}}</small> |
+                                    <small>{{formattedDate}} at {{time}}</small>
+                                </div>
+                                <br>
+                                <b>{{text}}</b>
+
+                            </div>
+
+                        {{/each}}
                 
-                    <small>Comment by: {{owner.username}}</small>
-                    <br>
-                    <small>{{formattedDate}} at {{time}}</small>
-                    <br>
-                    {{text}}
                     <hr>
                 
-                    {{/each}}
                 </div>
 
             </div>

@@ -265,6 +265,20 @@ label {
     color: white;
 }
 
+.comment {
+    background-color: white;
+    color: rgb(33, 37, 41);
+    padding: 2rem;
+    border-radius: 12px;
+
+}
+
+.comment small {
+    font-weight: 400;
+    color: #596aff
+}
+
+
 .profile-container {
     min-height: 90vh;
     margin-top: 10vh;
