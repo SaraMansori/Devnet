@@ -56,23 +56,21 @@ router.post('/signup/info/:id', CDNupload.single("image"), (req, res,) => {
 
     User
     .findByIdAndUpdate(id, {email, description, profession}, { new: true })
-    .then(()=> res.redirect(`/user/profile/${id}`)) 
+    .then(()=> {res.redirect(`/user/profile/${id}`)})
     .catch(err => console.log(err))
-
-
     
-    transporter
-    .sendMail({
-        from: `Welcome to devnet <devnethubsocial@gmail.com>`,
-        to: email,
-        subject: 'Thank you for sign up',
-        text: 'We are proud to have you.',
-        html: `<b>We are proud to have you in our social network. 
-        Come in to see our events and meet people.
-        </b>`
-    })
-    .then(info => res.send(info))
-    .catch(error => console.log(error))
+    // transporter
+    // .sendMail({
+    //     from: `Welcome to devnet <devnethubsocial@gmail.com>`,
+    //     to: email,
+    //     subject: 'Thank you for sign up',
+    //     text: 'We are proud to have you.',
+    //     html: `<b>We are proud to have you in our social network. 
+    //     Come in to see our events and meet people.
+    //     </b>`
+    // })
+    // .then(info => res.send(info))
+    // .catch(error => console.log(error))
     
         .findById(id)
         .then((user) => {
