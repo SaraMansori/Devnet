@@ -1,8 +1,9 @@
 <div class="container ">
     <div class="row">
         <h2 class="text">Tech news</h2>
+        <p class="text-center">(powered by NewYorkTimes)</p>
         {{#each allArticles}}
-        <div class="col-md-4 card-container space">
+        <div class="col-12 col-md-12 col-lg-4 card-container space d-flex justify-content-center">
             <div class="card-group color" style="width: 24rem;">
                 <div class="card color">
                     <img class="card-img-top" src="{{image}}" alt="iamge">
@@ -15,14 +16,18 @@
                             <h5 class="textTwo">{{author}}</h5>
                             <h5 class="textTwo">{{formattedDate}}</h5>
                             <br>
-                            {{#if isBookmark}}
-                            <a href="/news/remove-bookmark?id={{id}}" class="btn-dark btn " type="button"> Remove from
-                                favorites
-                            </a>
-                            {{else}}
-                            <a href="/news/bookmark?id={{id}}" class="btn-dark btn " type="button"> Save to Favorites
-                            </a>
-                            {{/if}}
+                            <div class="d-flex justify-content-center">
+                                {{#if isBookmark}}
+                                <a href="/news/remove-bookmark?id={{id}}" class="btn-danger btn " type="button"> Remove
+                                    from
+                                    favorites
+                                </a>
+                                {{else}}
+                                <a href="/news/bookmark?id={{id}}" class="btn-dark btn " type="button"> Save to
+                                    Favorites
+                                </a>
+                                {{/if}}
+                            </div>
                         </small>
                     </div>
                 </div>

@@ -3,17 +3,14 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-md-3 col-sm-12 mr-4">
-                    <div class="row d-flex justify-content-center align-content-center info">
+                    <div class="row">
+                        <h1 class="text-center">{{user.username}}</h1>
 
-                        <h1 style="color: white">Details of {{user.username}}</h1>
-
-                        <img src="{{user.image}}" alt="{{user.username}} image" class="profile-avatar">
+                        <img class="card-img-top" src="{{user.image}}" alt="{{user.username}} image">
 
                         <div class="col-12 d-flex justify-content-center">
 
-                            <ul>
-                                <br>
-                                <br>
+                            <ul class="mt-4">
                                 <li>Username: {{user.username}}</li>
                                 <li>Role: {{user.role}}</li>
                                 <li>Description: {{user.description}}</li>
@@ -32,26 +29,24 @@
 
                     </div>
                 </div>
-                <div class="col-md-9 col-sm-12">
-                    <h2>Events Created by <span class="orange">{{user.username}}</span></h2> 
-                    <div class="card-deck">
-                        <div class="row">
-                            {{#each createdEvents}}
-                            <div class="col-md-3 col-sm-12">
-                                <a href="/events/details?id={{_id}}">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{image}}" alt="{{name}} image">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{name}}</h5>
-                                        </div>
+                <div class="col-md-9 col-sm-12 mt-4 mb-4">
+                    <h2 class="mb-4">Events Created by <span class="orange">{{user.username}}</span></h2>
+                    <div class="card-deck row gap-4">
+                        {{#each createdEvents}}
+                        <div class="col-md-3 col-sm-12">
+                            <a href="/events/details?id={{_id}}">
+                                <div class="card">
+                                    <img class="card-img-top" src="{{image}}" alt="{{name}} image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{name}}</h5>
                                     </div>
-                                </a>
-                            </div>
-                            {{/each}}
+                                </div>
+                            </a>
                         </div>
+                        {{/each}}
                     </div>
                     <hr>
-                    <h2>Events to which will assist to</h2>
+                    <h2 class="text-center">Will assist to</h2>
                     {{#each participatingEvents}}
                     <div class="col-md-3 col-sm-12">
                         <a href="/events/details?id={{_id}}">
@@ -65,43 +60,43 @@
                     </div>
                     {{/each}}
                     <hr>
-                    <h2>Followers</h2>
-                    <ul>
-                    {{#each user.followers}}
-                    <li>
-                    <a href="/community/details?id={{_id}}">{{username}}</a>
-
-                    </li>
-                    {{/each}}
-                    </ul>
-                    <hr>
-                    <h2>Following</h2>
-                    {{#each user.following}}
-                    {{username}}
-                    {{/each}}
-                    <hr>
-                    <h2>Comments</h2>
-                    <ul>
-                        {{#each userComments}}
-                        <li>
-                            <small>Comment by: {{owner.username}}</small>
-                            <br>
-                            {{text}}
-                        </li>
+                    <h2 class="text-center">Followers</h2>
+                    <div class="d-flex justify-content-center gap-3">
+                        {{#each user.followers}}
+                        <a href="/community/details?id={{_id}}">{{username}}</a> |
                         {{/each}}
-                    </ul>
-                    <br>
-                    <div class="container">
-                        <div class="form-group">
-                            <form action="/user/comment" method="post">
-                                <label for="exampleFormControlTextarea1">New comment</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="text"
-                                    rows="3"></textarea>
-                                <input type="text" value="{{user._id}}" name="id" hidden>
-                                <br>
-                                <button type="submit" class="btn btn-primary">Send</button>
-                            </form>
+                    </div>
+                    <hr>
+                    <h2 class="text-center">Following</h2>
+                    <div class="d-flex justify-content-center gap-3">
+                        {{#each user.following}}
+                        <a href="/community/details?id={{_id}}">{{username}}</a> |
+                        {{/each}}
+                    </div>
+                    <hr>
+                    <h2 class="text-center mb-4">Comments</h2>
+                    {{#each userComments}}
+                    <div class="comment mb-3">
+
+                        <div class="mb-1">
+                            <small>Comment by: {{owner.username}}</small> |
+                            <small>{{formattedDate}} at {{time}}</small>
                         </div>
+                        <br>
+                        <b>{{text}}</b>
+
+                    </div>
+                    {{/each}}
+                    <br>
+                    <div class="form-group">
+                        <form action="/user/comment" method="post">
+                            <label for="exampleFormControlTextarea1">New comment</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="text"
+                                rows="3"></textarea>
+                            <input type="text" value="{{user._id}}" name="id" hidden>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
                     </div>
                     <hr>
                 </div>
@@ -109,5 +104,3 @@
         </div>
     </div>
 </div>
-
-

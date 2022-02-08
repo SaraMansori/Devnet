@@ -10,8 +10,12 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.navbar {
-    margin-bottom: 40px;
+.text-center {
+    text-align: center;
+}
+
+.container {
+    margin-top: 56px;
 }
 
 .navbar-dark .navbar-brand {
@@ -132,6 +136,10 @@ body::-webkit-scrollbar {
     transition: 0.4s;
 }
 
+.btn-block {
+    width: 100%;
+}
+
 .scroll-icon {
     position: absolute;
     width: 100vw;
@@ -145,6 +153,19 @@ body::-webkit-scrollbar {
 
 .card {
     height: 100%;
+}
+
+.card img {
+    padding: 1rem;
+}
+
+.tag {
+    background-color: #ff8159;
+    padding: 0.3rem;
+    color: white;   
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 
@@ -224,7 +245,7 @@ label {
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
-    padding: 0rem 0rem 0rem 2rem;
+    /* padding: 0rem 0rem 0rem 2rem; */
     min-height: 90vh;
     margin-bottom: 4rem;
 }
@@ -241,17 +262,7 @@ label {
     margin-bottom: 4rem;
 }
 
-.new-event-container h1 {
-    font-weight: 600;
-    font-size: 4rem;
-}
-
-.community-container h1 {
-    font-weight: 600;
-    font-size: 4rem;
-}
-
-.edit-event-container h1 {
+h1 {
     font-weight: 600;
     font-size: 4rem;
 }
@@ -261,8 +272,7 @@ label {
 }
 
 .event-details-container .event-image {
-    width: 500px;
-    height: 300px;
+    width: 100%;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -335,7 +345,7 @@ label {
 
 .orange-container h1 {
     font-weight: 600;
-    font-size: 4rem;
+    font-size: 3rem;
     color: white;
 }
 
@@ -474,6 +484,11 @@ label {
         width: 8rem;
         height: 8rem;
     }
+
+    h1 {
+    font-weight: 600;
+    font-size: 2rem;
+}
 
 }
 
