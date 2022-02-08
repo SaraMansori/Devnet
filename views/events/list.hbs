@@ -1,7 +1,7 @@
 <div class="container orange-container">
     <div class="row">
         <div class="col-12">
-            <div class="row justify-content-between">
+            <div class="row justify-content-center">
                 <div class="col-8">
                         <h1 class="text-center mb-5 mt-5">list of events</h1>    
                         <div class="row cards-row">
@@ -13,11 +13,14 @@
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <div>
                                                 <h5 class="card-title">{{name}}</h5>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
-                                                    viewBox="0 0 16 16">
-                                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                                                </svg>
-                                                <small class="card-text">{{country}}, {{city}}</small>
+                                                 
+                                                <div class="location mb-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                                    </svg>
+                                                    <small class="card-text">{{country}}, {{city}}</small>
+                                                </div>
                                                 <br>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event"
                                                     viewBox="0 0 16 16">
@@ -25,10 +28,17 @@
                                                     <path
                                                         d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                                                 </svg>
-                                                <small class="card-text">{{date}}, {{time}}</small>
+                                                <small class="card-text">{{date}}</small>
+                                                <br>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"
+                                                    viewBox="0 0 16 16">
+                                                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                                </svg>
+                                                <small class="card-text">{{time}} h</small>
                                             </div>
                                             <br>
-                                            <a href="/events/details?id={{id}}" class="btn btn-primary">Check details</a>
+                                            <a href="/events/details?id={{_id}}" class="btn btn-primary">Check details</a>
                                         </div>
 
                                     </div>
@@ -36,35 +46,13 @@
                         {{/each}}
                         </div>
                 </div>
-                <div class="col-3 filters">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control">
-                         <div class="input-group-append">
-                            <button class="btn btn-dark" type="button">Search</button>
-                        </div>
-                    </div>
-                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in cupiditate magnam asperiores soluta? </p> 
-                    <button class="btn btn-dark" type="button">Search</button>
-
-                    <div class="filters">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                    
-                        <div class="dropdown-menu btn-sm" type="button  " aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">City</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../utils/search.js"></script>
     <script src="../../js/api.handler.js"></script>
     <script src="../../js/script.js"></script>
 

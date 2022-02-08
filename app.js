@@ -7,6 +7,7 @@ const app = express()
 require("./config")(app)
 app.locals.title = `devnet`
 app.locals.mapsKey = process.env.MAPS_KEY
+
 app.locals.userLogged = false
 
 require('./config/session.config')(app)

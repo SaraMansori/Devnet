@@ -67,15 +67,14 @@
                {{/unless}}
 
                {{#if userLogged}}
-
+               
                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  <a class="nav-link dropdown-toggle" href="/profile/{{userObj.id}}" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                      aria-expanded="false">
                      Profile
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="/user/profile">My Profile</a></li>
-                     <li><a class="dropdown-item" href="/user/events">Events</a></li>
+                     <li><a class="dropdown-item" href="/user/profile/{{userObj.id}}">My Profile</a></li>
                      <li><a class="dropdown-item" href="/logout">Log out</a></li>
                   </ul>
                </li>

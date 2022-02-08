@@ -7,7 +7,7 @@ const {formatDate, formatTime} = require("../utils");
 
 
 
-router.get('/profile', isLoggedIn, (req, res) => {
+router.get('/profile/:id', isLoggedIn, (req, res) => {
 
     const id = req.session.currentUser._id
 

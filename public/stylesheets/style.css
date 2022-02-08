@@ -167,10 +167,6 @@ body::-webkit-scrollbar {
     padding: 5rem;
 }
 
-.cards-row {
-    margin-left: 3rem;
-}
-
 .landing-card,
 .card {
     color: rgb(33, 37, 41);
@@ -235,12 +231,98 @@ label {
 
 .new-event-container,
 .edit-event-container,
+.community-container,
+.event-details-container, 
 .community-container {
     margin-top: 80px;
     background-color: #ff8159;
     border-radius: 15px;
     min-height: 90vh;
     margin-bottom: 4rem;
+}
+
+.new-event-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.community-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.edit-event-container h1 {
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.event-details-container {
+    padding: 3rem;
+}
+
+.event-details-container .event-image {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.mini-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.event-details-container p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.comment {
+    background-color: white;
+    color: rgb(33, 37, 41);
+    padding: 2rem;
+    border-radius: 12px;
+
+}
+
+.comment small {
+    font-weight: 400;
+    color: #596aff
+}
+
+
+.profile-container,
+.signup-info-container
+ {
+    min-height: 90vh;
+    margin-top: 10vh;
+}
+
+
+.info img {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.profile-container .info {
+    background-color: #ff8159;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.community-container {
+    padding: 0 6rem 0 6rem;
+}
+
+.community-container img {
+    width: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .community-container img {
@@ -310,15 +392,20 @@ label {
     padding-top: 50px;
 }
 .color{
-    background-color: rgb(33, 37, 41);
+    background-color: #ff8159;
     color: white;
+    padding: 2px;
+    border-radius: 3px;
+    
 }
+
 .text{
     text-align: center;
     padding-top: 50px;
 }
 .textTwo{
     font-size: 10px;
+    color: white;
 }
 .textThree{
     font-size: 15px;
@@ -353,6 +440,10 @@ label {
     text-align: center;
 }
 
+.signup-container, .login-container {
+    min-height: 92.5vh;
+}
+
 
 @media (max-width: 1200px) {
     .landing-title h2 {
@@ -384,4 +475,9 @@ label {
         height: 8rem;
     }
 
+}
+
+.detailsOne{
+    justify-content: center;
+    padding-top: 50px;
 }

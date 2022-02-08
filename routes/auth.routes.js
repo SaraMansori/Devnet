@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
+const transporter = require('./../config/mailing.config')
 const CDNupload = require("../config/upload.config");
 
 
@@ -51,21 +52,39 @@ router.get("/signup/info/:id", (req, res) => {
 router.post('/signup/info/:id', CDNupload.single("image"), (req, res,) => {
 
     const {id} = req.params
-    const { email, description, profession } = req.body
+    const { email, description, profession, username } = req.body
 
-    User
+/*     User
+    .findByIdAndUpdate(id, {email, description, profession}, { new: true })
+    .then(()=> res.redirect(`/user/profile/${id}`)) 
+    .catch(err => console.log(err)) */
+
+/*     transporter
+    .sendMail({
+        from: `Welcome to devnet <devnethubsocial@gmail.com>`,
+        to: email,
+        subject: 'Thank you for sign up',
+        text: 'We are proud to have you.',
+        html: `<b>We are proud to have you in our social network. 
+        Come in to see our events and meet people.
+        </b>`
+    })
+    .then(info => res.send(info))
+    .catch(error => console.log(error)) */
+    
+        User
         .findById(id)
         .then((user) => {
             req.session.currentUser = user
             req.app.locals.userLogged = true
             return User.findByIdAndUpdate(id, {email, description, profession, image: req.file?.path}, { new: true })
         })
-        .then(()=> res.redirect(`/user/profile`)) 
+        .then(()=> res.redirect(`/user/profile/${id}`)) 
         .catch(err => console.log(err))
 })
 
 
-// Login
+
 router.get('/login', (req, res) => res.render('auth/login'))
 router.post('/login', (req, res) => {
 
@@ -91,8 +110,9 @@ router.post('/login', (req, res) => {
             }
 
             req.session.currentUser = user
+            req.app.locals.userObj = user
             req.app.locals.userLogged = true
-            res.redirect('/user/profile')
+            res.redirect(`/user/profile/${user._id}`)
         })
         .catch(err => console.log(err))
 
@@ -100,7 +120,19 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/'))
+    delete req.app.locals.userObj
     req.app.locals.userLogged = false
+})
+router.get('/profile/:id', (req, res, next ) =>{
+
+    const {id} = req.params
+    
+    
+    User
+    .findById(id)
+    .then((user) =>res.render('./../views/profiles/views',user))
+    .catch(err => console.log(err))
+
 })
 
 
